@@ -1,4 +1,3 @@
 openpyxl
 plotly
 hydralit_components
-AgGrid
