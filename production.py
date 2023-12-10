@@ -104,7 +104,7 @@ if uploaded_file is not None:
 
         sorted_prev = pd.DataFrame(preview_sorted)
 
-        AgGrid(sorted_prev)
+        st.dataframe(sorted_prev)
 
     if view == 'Branch':
         unique = newdf['BRANCH'].unique()
