@@ -23,23 +23,6 @@ uploaded_file = st.sidebar.file_uploader("Upload Production Listing",  type=['cs
 
 
 if uploaded_file is not None:
-    
-    # Display the uploaded file name
-    st.write("File selected:", uploaded_file.name)
-
-    # Process the uploaded file
-    st.write("Processing...")
-    progress_bar = st.progress(0)  # Initialize progress bar
-
-    # Update progress bar
-    for percent_complete in range(100):
-        time.sleep(0.1)  # Simulating processing time
-        progress_bar.progress(percent_complete + 1)
-
-    # Display completion message
-    st.success("Processing complete!")
-
-    st.write("")
     try:
         if uploaded_file.type == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet":
             data_types = {'Policy No': str}
