@@ -102,7 +102,9 @@ if uploaded_file is not None:
 
         st.plotly_chart(fig)
 
-        AgGrid(newdf)
+        soreted = pd.DataFrame(preview_sorted)
+
+        AgGrid(sorted)
 
     if view == 'Branch':
         unique = newdf['BRANCH'].unique()
