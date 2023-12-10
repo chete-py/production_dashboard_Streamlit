@@ -136,7 +136,7 @@ if uploaded_file is not None:
         total_mix = (motor+nonmotor)
         total_mix_result = "{:,.0f}".format(total_mix)
         mix = (nonmotor/total_mix)*100
-        mix_result = "{:.2f}".format(mix)
+        mix_result = "{:.0f}".format(mix)
 
         bar = filtered_df.groupby('NEW TM')['GROSS PREMIUM'].sum().reset_index()
 
