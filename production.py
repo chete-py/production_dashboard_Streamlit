@@ -20,12 +20,12 @@ st.sidebar.image('corplogo.PNG', use_column_width=True)
 uploaded_file = st.sidebar.file_uploader("Upload Production Listing",  type=['csv', 'xlsx', 'xls'], kwargs=None,)
 
 txt = "Please Wait"
-my_bar = st.progress(0 , text = txt)
+my_bar = st.sidebar.progress(0 , text = txt)
 for pr in range(100):
-    time.sleep(0.1)
+    time.sleep(0.05)
     my_bar.progress(pr + 1 , text = txt)
 with st.spinner("wait for it..."):
-    time.sleep(5)
+    time.sleep(3)
 st.write("wait over")
 
 
