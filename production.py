@@ -16,7 +16,15 @@ theme_good = {'bgcolor': '#EFF8F7','title_color': 'green','content_color': 'gree
 
 st.sidebar.image('corplogo.PNG', use_column_width=True)
 
-uploaded_file = st.sidebar.file_uploader("$Upload Production Listing$",  type=['csv', 'xlsx', 'xls'], kwargs=None,)
+uploaded_file = st.sidebar.file_uploader("Upload Production Listing",  type=['csv', 'xlsx', 'xls'], kwargs=None,)
+
+txt = "Please Wait"
+my_bar = st.progress(0 , text = txt)
+for pr in range(100):
+    time.sleep(0.1)
+    my_bar.progress(pr + 1 , text = txt)
+
+
 
 if uploaded_file is not None:
     try:
