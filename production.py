@@ -6,7 +6,6 @@ import math
 from datetime import datetime, timedelta
 import base64
 from st_aggrid import AgGrid
-
 import io
 import hydralit_components as hc
 
@@ -47,6 +46,9 @@ if uploaded_file is not None:
     newdf = pd.merge(thedf, lastdf, on='INTERMEDIARY', how='left')
     newdf = newdf[["TRANSACTION DATE", "BRANCH", "INTERMEDIARY TYPE", "INTERMEDIARY", "PRODUCT", "SALES TYPE", "SUM INSURED", "GROSS PREMIUM", "NET BALANCE", "RECEIPTS", "NEW TM", "MONTH NAME"]]
     cancellations = newdf[newdf['SUM INSURED'] < 0]
+    preview = newdf.groupby('INTERMEDIARY')['GROSS PREMIUM'].sum()
+    # Sort the results from highest to lowest
+    preview_sorted = preview.sort_values(ascending=False)
 
     if view == 'Company':
 
@@ -100,7 +102,7 @@ if uploaded_file is not None:
 
         st.plotly_chart(fig)
 
-        st.dataframe(cancellations)
+        AgGrid(preview_sorted)
 
     if view == 'Branch':
         unique = newdf['BRANCH'].unique()
