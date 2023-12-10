@@ -31,9 +31,6 @@ if uploaded_file is not None:
     st.write("Processing...")
     progress_bar = st.progress(0)  # Initialize progress bar
 
-    # Placeholder for processing logic
-    process_uploaded_file(uploaded_file)
-
     # Update progress bar
     for percent_complete in range(100):
         time.sleep(0.1)  # Simulating processing time
