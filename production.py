@@ -107,7 +107,7 @@ if uploaded_file is not None:
                  y= bar["GROSS PREMIUM"]        
                  )])
 
-        fig.update_layout(title={'text': 'BRANCH PERFORMANCE', 'x': 0.375, 'xanchor': 'center'}) 
+        fig.update_layout(title={'text': 'PRODUCTION PER BRANCH', 'x': 0.375, 'xanchor': 'center'}) 
 
         st.plotly_chart(fig)
 
