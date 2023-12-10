@@ -275,11 +275,9 @@ if uploaded_file is not None:
             'DAILY': [f'Ksh. {target_daily}']
         })
         
-        # Display the table without the index
+        # Display the table 
         st.write(table_data.style.set_properties(**{'text-align': 'center'}).to_html(index=False, escape=False), unsafe_allow_html=True)
-        st.dataframe(table_data)
-        #AgGrid(table_data)
-        
+                
         st.markdown("")
         
         cc= st.columns(4)
