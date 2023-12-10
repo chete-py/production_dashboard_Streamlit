@@ -64,7 +64,7 @@ if uploaded_file is not None:
         mix = (nonmotorproduce/ totalmix)*100
         mix_result = "{:.0f}".format(mix)
         
-        bar = newdf.groupby('BRANCH')['GROSS PREMIUM'].sum().reset_index()
+        bar = newdf.groupby('BRANCH')['GROSS PREMIUM', 'BRANCH', 'NEW TM'].sum().reset_index()
 
         gp = newdf['GROSS PREMIUM'].sum()
         total_gp = "Ksh. {:,.0f}".format(gp)
