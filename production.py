@@ -97,7 +97,7 @@ if uploaded_file is not None:
             hc.info_card(title='Credit', content=f'{total_credit}', sentiment='neutral',bar_value=55, content_text_size = 'small', title_text_size='small')
 
         with cc[3]:
-            hc.info_card(title='Cancellations', content=f'{amount_cancelled}',bar_value=2, title_text_size='small', content_text_size = 'small', theme_override=theme_bad)
+            hc.info_card(title='Cancelled', content=f'{amount_cancelled}',bar_value=2, title_text_size='small', content_text_size = 'small', theme_override=theme_bad)
 
         with cc[4]:
             hc.info_card(title='Portfolio Mix',content= f'{mix_result}% Motor',key='sec',bar_value=5, content_text_size = 'small', sentiment='good', title_text_size='small')
@@ -162,7 +162,7 @@ if uploaded_file is not None:
             hc.info_card(title='Credit', content=f'{total_credit}', sentiment='neutral', content_text_size = 'small', bar_value=55, title_text_size='small')
 
         with cc[3]:
-            hc.info_card(title='Cancellations', content=f'{amount_cancelled}',bar_value=2, title_text_size='small', content_text_size = 'small', theme_override=theme_bad)
+            hc.info_card(title='Cancelled', content=f'{amount_cancelled}',bar_value=2, title_text_size='small', content_text_size = 'small', theme_override=theme_bad)
 
         with cc[4]:
             hc.info_card(title='Portfolio Mix',content=f'{mix_result}% Motor ',key='sec', bar_value=5, content_text_size = 'small', sentiment='good', title_text_size='small')
