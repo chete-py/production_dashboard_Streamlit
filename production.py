@@ -70,7 +70,7 @@ if uploaded_file is not None:
 
         totalmix = (motorproduce+nonmotorproduce)
         total_mix_result = "{:,.0f}".format(totalmix)
-        mix = (nonmotorproduce/ totalmix)*100
+        mix = (motorproduce/ totalmix)*100
         mix_result = "{:.0f}".format(mix)
         
         bar = newdf.groupby('BRANCH')['GROSS PREMIUM'].sum().reset_index()
@@ -100,7 +100,7 @@ if uploaded_file is not None:
             hc.info_card(title='Cancellations', content=f'{amount_cancelled}',bar_value=2, title_text_size='small', content_text_size = 'small', theme_override=theme_bad)
 
         with cc[4]:
-            hc.info_card(title='Portfolio Mix',content= f'{mix_result}% Non-Motor',key='sec',bar_value=5, content_text_size = 'small', sentiment='good', title_text_size='small')
+            hc.info_card(title='Portfolio Mix',content= f'{mix_result}% Motor',key='sec',bar_value=5, content_text_size = 'small', sentiment='good', title_text_size='small')
             
         fig = go.Figure(data =[go.Bar(
                  x= bar["BRANCH"],
