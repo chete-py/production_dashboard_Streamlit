@@ -19,14 +19,7 @@ st.sidebar.image('corplogo.PNG', use_column_width=True)
 
 uploaded_file = st.sidebar.file_uploader("Upload Production Listing",  type=['csv', 'xlsx', 'xls'], kwargs=None,)
 
-txt = "Please Wait"
-my_bar = st.sidebar.progress(0 , text = txt)
-for pr in range(100):
-    time.sleep(0.005)
-    my_bar.progress(pr + 1 , text = txt)
-with st.spinner("wait for it..."):
-    time.sleep(1)
-st.write("")
+
 
 
 if uploaded_file is not None:
@@ -42,6 +35,14 @@ if uploaded_file is not None:
         st.write("Error:", e)
 
 if uploaded_file is not None:
+    txt = "Please Wait"
+    my_bar = st.sidebar.progress(0 , text = txt)
+    for pr in range(100):
+        time.sleep(0.005)
+        my_bar.progress(pr + 1 , text = txt)
+    with st.spinner("wait for it..."):
+        time.sleep(1)
+    st.write("")
     view = st.sidebar.radio('Select',['Company', 'Branch', 'Territorial Manager'])
     df2 = df[["TRANSACTION DATE", "BRANCH", "INTERMEDIARY TYPE", "INTERMEDIARY", "PRODUCT", "SALES TYPE", "STAMP DUTY", "SUM INSURED", "GROSS PREMIUM", "NET BALANCE", "RECEIPTS", "TM"]]    
     df2['STAMP DUTY'] = df2['STAMP DUTY'].astype(str) 
