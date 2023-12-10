@@ -26,7 +26,7 @@ for pr in range(100):
     my_bar.progress(pr + 1 , text = txt)
 with st.spinner("wait for it..."):
     time.sleep(1)
-st.write("wait over")
+st.write("")
 
 
 if uploaded_file is not None:
