@@ -46,9 +46,9 @@ if uploaded_file is not None:
     newdf = pd.merge(thedf, lastdf, on='INTERMEDIARY', how='left')
     newdf = newdf[["TRANSACTION DATE", "BRANCH", "INTERMEDIARY TYPE", "INTERMEDIARY", "PRODUCT", "SALES TYPE", "SUM INSURED", "GROSS PREMIUM", "NET BALANCE", "RECEIPTS", "NEW TM", "MONTH NAME"]]
     cancellations = newdf[newdf['SUM INSURED'] < 0]
-    preview = newdf.groupby('INTERMEDIARY')['GROSS PREMIUM'].sum().head(5)
+    preview = newdf.groupby('INTERMEDIARY')['GROSS PREMIUM'].sum()
     # Sort the results from highest to lowest
-    preview_sorted = preview.sort_values(ascending=False)
+    preview_sorted = preview.sort_values(ascending=False).head(5)
 
     if view == 'Company':
 
