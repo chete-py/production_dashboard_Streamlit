@@ -6,6 +6,7 @@ import math
 from datetime import datetime, timedelta
 import base64
 from st_aggrid import AgGrid
+import time
 import io
 import hydralit_components as hc
 
