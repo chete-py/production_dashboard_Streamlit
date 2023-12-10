@@ -23,19 +23,7 @@ uploaded_file = st.sidebar.file_uploader("Upload Production Listing",  type=['cs
 
 
 if uploaded_file is not None:
-    try:
-        if uploaded_file.type == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet":
-            data_types = {'Policy No': str}
-            df = pd.read_excel(uploaded_file, dtype = data_types, header=6)
-                      
-        elif uploaded_file.type == "text/csv":
-            df = pd.read_csv(uploaded_file, header=6)
-
-    except Exception as e:    
-        st.write("Error:", e)
-
-if uploaded_file is not None:
-
+    
     # Display the uploaded file name
     st.write("File selected:", uploaded_file.name)
 
@@ -55,6 +43,19 @@ if uploaded_file is not None:
     st.success("Processing complete!")
 
     st.write("")
+    try:
+        if uploaded_file.type == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet":
+            data_types = {'Policy No': str}
+            df = pd.read_excel(uploaded_file, dtype = data_types, header=6)
+                      
+        elif uploaded_file.type == "text/csv":
+            df = pd.read_csv(uploaded_file, header=6)
+
+    except Exception as e:    
+        st.write("Error:", e)
+
+if uploaded_file is not None:
+
     view = st.sidebar.radio('Select',['Company', 'Branch', 'Territorial Manager'])
     df2 = df[["TRANSACTION DATE", "BRANCH", "INTERMEDIARY TYPE", "INTERMEDIARY", "PRODUCT", "SALES TYPE", "STAMP DUTY", "SUM INSURED", "GROSS PREMIUM", "NET BALANCE", "RECEIPTS", "TM"]]    
     df2['STAMP DUTY'] = df2['STAMP DUTY'].astype(str) 
