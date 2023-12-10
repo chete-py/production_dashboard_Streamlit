@@ -22,10 +22,10 @@ uploaded_file = st.sidebar.file_uploader("Upload Production Listing",  type=['cs
 txt = "Please Wait"
 my_bar = st.sidebar.progress(0 , text = txt)
 for pr in range(100):
-    time.sleep(0.05)
+    time.sleep(0.005)
     my_bar.progress(pr + 1 , text = txt)
 with st.spinner("wait for it..."):
-    time.sleep(3)
+    time.sleep(1)
 st.write("wait over")
 
 
