@@ -56,8 +56,8 @@ if uploaded_file is not None:
      
     })
     
-    # Sort the results from highest to lowest
-    preview_sorted = preview.sort_values(ascending=False).head(5)
+    # Sort the results from highest to lowest and take the top 5 rows
+    preview_sorted = preview.sort_values(by='GROSS PREMIUM', ascending=False).head(5)
 
     if view == 'Company':
 
