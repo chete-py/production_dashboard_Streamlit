@@ -102,9 +102,9 @@ if uploaded_file is not None:
 
         st.plotly_chart(fig)
 
-        soreted = pd.DataFrame(preview_sorted)
+        sorted_prev = pd.DataFrame(preview_sorted)
 
-        st.write(sorted)
+        st.write(sorted_prev)
 
     if view == 'Branch':
         unique = newdf['BRANCH'].unique()
