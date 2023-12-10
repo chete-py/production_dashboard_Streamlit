@@ -277,7 +277,7 @@ if uploaded_file is not None:
         
         # Display the table without the index
         st.write(table_data.style.set_properties(**{'text-align': 'center'}).to_html(index=False, escape=False), unsafe_allow_html=True)
-
+        st.dataframe(table_data)
         #AgGrid(table_data)
         
         st.markdown("")
