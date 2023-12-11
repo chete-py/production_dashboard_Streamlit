@@ -209,7 +209,9 @@ if uploaded_file is not None:
 
         # Filter the DataFrame based on the selected branch
         #newdf = newdf[newdf['GROSS PREMIUM'] > 0]
-        filtered_df = newdf[(newdf['NEW TM'] == selected_manager) & (newdf['MONTH NAME'] == current_month_name)]
+        newdf1 = newdf['NEW TM'].dropna()
+
+        filtered_df = newdf1[(newdf1['NEW TM'] == selected_manager) & (newdf['MONTH NAME'] == current_month_name)]
         filtered_target = target[(target['NEW TM'] == selected_manager) & (target['MONTH'] == current_month_name)]
         total = int(filtered_target['TOTAL'].sum())
         target_total = "{:,.0f}".format(total)
@@ -248,8 +250,7 @@ if uploaded_file is not None:
 
         filtered_df['TRANSACTION DATE'] = pd.to_datetime(filtered_df['TRANSACTION DATE'])
 
-        
-
+      
         # Ensure 'TRANSACTION DATE' is a datetime object
         if pd.api.types.is_datetime64_any_dtype(filtered_df['TRANSACTION DATE']):
             # Calculate the start date of the current week (Monday)
@@ -334,5 +335,3 @@ if uploaded_file is not None:
             hc.info_card(title='Yesterday Cancellations', content=f'{amount_daily_cancelled}',bar_value=2, key='cancelled', title_text_size='small', content_text_size = 'small', theme_override=theme_bad)
 
 
-        st.dataframe(filtered_df)
-       
