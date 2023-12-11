@@ -208,10 +208,7 @@ if uploaded_file is not None:
       
 
         # Filter the DataFrame based on the selected branch
-        #newdf = newdf[newdf['GROSS PREMIUM'] > 0]
-        newdf1 = newdf['NEW TM'].dropna()
-
-        filtered_df = newdf1[(newdf1['NEW TM'] == selected_manager) & (newdf['MONTH NAME'] == current_month_name)]
+        filtered_df = newdf[(newdf['NEW TM'] == selected_manager) & (newdf['MONTH NAME'] == current_month_name)]
         filtered_target = target[(target['NEW TM'] == selected_manager) & (target['MONTH'] == current_month_name)]
         total = int(filtered_target['TOTAL'].sum())
         target_total = "{:,.0f}".format(total)
@@ -221,8 +218,7 @@ if uploaded_file is not None:
         weekly = (total/4)
         target_daily = "{:,.0f}".format(daily)
         target_weekly = "{:,.0f}".format(weekly)
-
-
+        
         month_premium = filtered_df['GROSS PREMIUM'].sum()
         fom_month_premium = "Ksh. {:,.0f}".format(month_premium)
         month_receipts = filtered_df['RECEIPTS'].sum()
