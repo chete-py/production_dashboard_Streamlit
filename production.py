@@ -333,4 +333,6 @@ if uploaded_file is not None:
         with cc_row2[3]:
             hc.info_card(title='Yesterday Cancellations', content=f'{amount_daily_cancelled}',bar_value=2, key='cancelled', title_text_size='small', content_text_size = 'small', theme_override=theme_bad)
 
+
+        st.dataframe(filtered_df)
        
