@@ -4,6 +4,7 @@ import plotly as px
 import plotly.graph_objects as go
 from datetime import datetime, timedelta
 from streamlit_vizzu import VizzuChart, Data, Config, Style, Chart
+from ipyvizzu import Chart, Data, Config, Style
 from ipyvizzustory import Story, Slide, Step
 from streamlit.components.v1 import html
 import base64
