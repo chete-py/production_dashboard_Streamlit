@@ -5,6 +5,7 @@ import plotly.graph_objects as go
 from datetime import datetime, timedelta
 from ipyvizzu import Chart, Data, Config, Style
 from ipyvizzustory import Story, Slide, Step
+from streamlit.components.v1 import html
 import base64
 from st_aggrid import AgGrid
 import io
