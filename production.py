@@ -202,12 +202,6 @@ if uploaded_file is not None:
 
         chart.show()
 
-        # Display the chart in Streamlit
-        st.markdown(chart._repr_html_(), unsafe_allow_html=True)
-
-        # html(chart._repr_html_(),width=750, height=500) 
-        
-
         gp = newdf['GROSS PREMIUM'].sum()
         total_gp = "Ksh. {:,.0f}".format(gp)
 
