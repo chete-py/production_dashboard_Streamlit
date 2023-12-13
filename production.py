@@ -139,6 +139,9 @@ if uploaded_file is not None:
 
         st.dataframe(sorted_prev)
 
+        st.write(new_business)
+        st.write(new_business_percent)
+
 
     if view == 'Branch':
         unique = newdf['BRANCH'].unique()
