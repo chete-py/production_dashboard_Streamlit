@@ -98,7 +98,7 @@ if uploaded_file is not None:
         output = chart.show()
 
         if output is not None and "marker" in output:
-            st.write("Value of clicked bar", output['marker']["Values"]["GROSS PREMIUM"])
+            st.write("value of clicked bar:", output['marker']["Values"]["GROSS PREMIUM"])
             
             
         gp = newdf['GROSS PREMIUM'].sum()
