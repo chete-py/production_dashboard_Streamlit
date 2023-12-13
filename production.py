@@ -200,7 +200,8 @@ if uploaded_file is not None:
         
         story.add_slide(slide4)
 
-        st.pydeck_chart(chart)
+        # Display the chart in Streamlit
+        st.markdown(chart._repr_html_(), unsafe_allow_html=True)
 
         # html(chart._repr_html_(),width=750, height=500) 
         
