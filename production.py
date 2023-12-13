@@ -126,11 +126,11 @@ if uploaded_file is not None:
 
 	            {
 
-	                "x": ["Percentsge", "BRANCH"],
+	                "x": ["PercentAge", "BRANCH"],
 
 	                "y": None,
 
-	                "label": "Percentage [%]",))
+	                "label": "Percentage",))
         
         # chart.animate(
 
