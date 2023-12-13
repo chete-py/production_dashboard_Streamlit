@@ -188,14 +188,26 @@ if uploaded_file is not None:
         with cc[4]:
             hc.info_card(title='Portfolio Mix',content=f'{mix_result}% Motor ',key='sec', bar_value=5, content_text_size = 'small', sentiment='good', title_text_size='small')
 
-        fig = go.Figure(data =[go.Bar(
-                 x= bar["NEW TM"],
-                 y= bar["GROSS PREMIUM"]        
-                 )])
+         chart = VizzuChart()
+        
+        bar = newdf.groupby('BRANCH')['GROSS PREMIUM'].sum().reset_index()
 
-        fig.update_layout(title={'text': 'TERRITORIAL MANAGER PERFORMANCE IN BRANCH', 'x': 0.45, 'xanchor': 'center'}) 
+        data = Data()
 
-        st.plotly_chart(fig)
+        bar['Percentage'] = (bar['GROSS PREMIUM']/(bar['GROSS PREMIUM'].sum()) * 100)
+        
+        # Animate the data
+        chart.animate(data)
+
+        chart.animate(Config({"x": "BRANCH", "y": "GROSS PREMIUM", "title": "PRODUCTION PER BRANCH", "color": "BRANCH",  "label":"GROSS PREMIUM"}), delay=2)
+
+       
+        if st.checkbox("Swap"):
+            chart.animate(Config({"x":"GROSS PREMIUM", "y": "BRANCH", "title": "PRODUCTION PER BRANCH", "color": "BRANCH",  "label":"GROSS PREMIUM"}))
+
+        
+
+        output = chart.show()
 
 
     if view == 'Territorial Manager':
