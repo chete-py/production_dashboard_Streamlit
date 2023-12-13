@@ -85,21 +85,6 @@ if uploaded_file is not None:
 
         bar['Percentage'] = (bar['GROSS PREMIUM']/(bar['GROSS PREMIUM'].sum()) * 100)
         
-        data.add_df(bar)
-        
-        # Animate the data
-        chart.animate(data)
-
-        chart.animate(Config({"x": "BRANCH", "y": "GROSS PREMIUM", "title": "BRANCH PERFORMANCE"}))
-
-        if st.checkbox("Swap"):
-            chart.animate(Config({"x":"GROSS PREMIUM", "y": "BRANCH", "title": "BRANCH PERFORMANCE"}))
-
-        output = chart.show()
-
-        if output is not None and "marker" in output:
-            st.write("value of clicked bar:", output['marker']["values"]["GROSS PREMIUM"])
-            
             
         gp = newdf['GROSS PREMIUM'].sum()
         total_gp = "Ksh. {:,.0f}".format(gp)
@@ -128,14 +113,22 @@ if uploaded_file is not None:
         with cc[4]:
             hc.info_card(title='Portfolio Mix',content= f'{mix_result}% Motor',key='sec',bar_value=5, content_text_size = 'small', sentiment='good', title_text_size='small')
             
-        fig = go.Figure(data =[go.Bar(
-                 x= bar["BRANCH"],
-                 y= bar["GROSS PREMIUM"]        
-                 )])
+       
+        data.add_df(bar)
+        
+        # Animate the data
+        chart.animate(data)
 
-        fig.update_layout(title={'text': 'PRODUCTION PER BRANCH', 'x': 0.45, 'xanchor': 'center'}) 
+        chart.animate(Config({"x": "BRANCH", "y": "GROSS PREMIUM", "title": "BRANCH PERFORMANCE"}))
 
-        st.plotly_chart(fig)
+        if st.checkbox("Swap"):
+            chart.animate(Config({"x":"GROSS PREMIUM", "y": "BRANCH", "title": "BRANCH PERFORMANCE"}))
+
+        output = chart.show()
+
+        if output is not None and "marker" in output:
+            st.write("Value of Clicked Branch:", output['marker']["values"]["GROSS PREMIUM"])
+            
 
         sorted_prev = pd.DataFrame(preview_sorted)
 
