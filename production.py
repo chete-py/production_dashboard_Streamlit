@@ -8,6 +8,7 @@ from ipyvizzustory import Story, Slide, Step
 import base64
 from st_aggrid import AgGrid
 import io
+from IPython.display import HTML, display
 import hydralit_components as hc
 
 #can apply customisation to almost all the properties of the card, including the progress bar
@@ -197,9 +198,9 @@ if uploaded_file is not None:
         )
         
         story.add_slide(slide4)
-        
-        display(HTML(chart._repr_html_()))
 
+        st.py_viz_chart(chart)
+        
 
         gp = newdf['GROSS PREMIUM'].sum()
         total_gp = "Ksh. {:,.0f}".format(gp)
