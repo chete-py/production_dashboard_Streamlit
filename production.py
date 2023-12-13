@@ -80,7 +80,7 @@ if uploaded_file is not None:
         mix = (motorproduce/ totalmix)*100
         mix_result = "{:.0f}".format(mix)
 
-        chart = VizzuChart()
+        chart = vizzu.chart()
         
         bar = newdf.groupby('BRANCH')['GROSS PREMIUM'].sum().reset_index()
 
