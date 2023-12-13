@@ -201,7 +201,8 @@ if uploaded_file is not None:
         story.add_slide(slide4)
 
         output = chart.show()
-        st.write(bar)
+        
+        st.write(output)
 
         gp = newdf['GROSS PREMIUM'].sum()
         total_gp = "Ksh. {:,.0f}".format(gp)
