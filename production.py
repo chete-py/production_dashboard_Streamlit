@@ -121,12 +121,22 @@ if uploaded_file is not None:
 
         chart.animate(Config({"x": "BRANCH", "y": "GROSS PREMIUM", "title": "PRODUCTION PER BRANCH", "color": "BRANCH"}), delay=2)
 
-
         chart.animate(
+            Config(
 
-        Config({"coordSystem": "polar"}), delay=1
+	            {
 
-        )
+	                "x": ["Percentsge", "BRANCH"],
+
+	                "y": None,
+
+	                "label": "Percentage [%]",))
+        
+        # chart.animate(
+
+        # Config({"coordSystem": "polar"}), delay=1
+
+        # )
 
         if st.checkbox("Swap"):
             chart.animate(Config({"x":"GROSS PREMIUM", "y": "BRANCH", "title": "PRODUCTION PER BRANCH", "color": "BRANCH"}))
