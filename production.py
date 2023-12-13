@@ -121,25 +121,7 @@ if uploaded_file is not None:
 
         chart.animate(Config({"x": "BRANCH", "y": "GROSS PREMIUM", "title": "PRODUCTION PER BRANCH", "color": "BRANCH"}), delay=2)
 
-        # chart.animate(
-        #     Config(
-
-	       #      {
-
-	       #          "x": ["Percentage", "BRANCH"],
-
-	       #          "y": None,
-
-	       #          "label": "Percentage"}))
-        
-        chart.animate( 
-	        Style({"plot": {"xAxis"}}),
-
-	        Config(
-
-	            {"coordSystem": "polar"}
-		))
-
+       
         if st.checkbox("Swap"):
             chart.animate(Config({"x":"GROSS PREMIUM", "y": "BRANCH", "title": "PRODUCTION PER BRANCH", "color": "BRANCH"}))
 
