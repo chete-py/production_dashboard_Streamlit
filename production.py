@@ -129,15 +129,12 @@ if uploaded_file is not None:
 
        
         if st.checkbox("Swap"):
-            chart.animate(Config((vizzu.pie()
-             .angle("Percentage")
-             .by("BRANCH")
-            ))
-            # chart.animate(Config({"x":"GROSS PREMIUM", "y": "BRANCH", "title": "PRODUCTION PER BRANCH", "color": "BRANCH",  "label":"GROSS PREMIUM"}))
+            
+            chart.animate(Config({"x":"GROSS PREMIUM", "y": "BRANCH", "title": "PRODUCTION PER BRANCH", "color": "BRANCH",  "label":"GROSS PREMIUM"}))
 
         
 
-        # output = chart.show()
+        output = chart.show()
 
         
         st.markdown("")
