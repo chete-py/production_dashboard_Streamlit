@@ -126,7 +126,7 @@ if uploaded_file is not None:
 
 	            {
 
-	                "x": ["PercentAge", "BRANCH"],
+	                "x": ["Percentage", "BRANCH"],
 
 	                "y": None,
 
