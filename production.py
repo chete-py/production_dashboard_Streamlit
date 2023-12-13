@@ -200,6 +200,8 @@ if uploaded_file is not None:
         
         story.add_slide(slide4)
 
+        chart.show()
+
         # Display the chart in Streamlit
         st.markdown(chart._repr_html_(), unsafe_allow_html=True)
 
