@@ -198,11 +198,7 @@ if uploaded_file is not None:
         
         story.add_slide(slide4)
         
-        
-        
-        # Play the created story!
-        
-        story.play()
+        display(HTML(chart._repr_html_()))
 
 
         gp = newdf['GROSS PREMIUM'].sum()
