@@ -2,3 +2,4 @@ openpyxl
 plotly
 hydralit_components
 streamlit-aggrid
+ipyvizzu
