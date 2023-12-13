@@ -193,8 +193,8 @@ if uploaded_file is not None:
         bar_df = filtered_df.groupby('NEW TM')['GROSS PREMIUM'].sum().reset_index()
         
         fig = go.Figure(data =[go.Bar(
-                 x= bar["NEW TM"],
-                 y= bar["GROSS PREMIUM"]        
+                 x= bar_df["NEW TM"],
+                 y= bar_df["GROSS PREMIUM"]        
                  )])
 
         fig.update_layout(title={'text': 'TERRITORIAL MANAGER PERFORMANCE IN BRANCH', 'x': 0.375, 'xanchor': 'center'}) 
