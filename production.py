@@ -137,7 +137,7 @@ if uploaded_file is not None:
 
         
 
-        output = chart.show()
+        # output = chart.show()
 
         
         st.markdown("")
