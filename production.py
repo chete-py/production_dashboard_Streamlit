@@ -188,7 +188,7 @@ if uploaded_file is not None:
         with cc[4]:
             hc.info_card(title='Portfolio Mix',content=f'{mix_result}% Motor ',key='sec', bar_value=5, content_text_size = 'small', sentiment='good', title_text_size='small')
 
-         chart = VizzuChart()
+        chart = VizzuChart()
         
         bar = newdf.groupby('BRANCH')['GROSS PREMIUM'].sum().reset_index()
 
