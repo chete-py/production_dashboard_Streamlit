@@ -133,13 +133,11 @@ if uploaded_file is not None:
 	       #          "label": "Percentage"}))
         
         chart.animate( 
-	        Style({"plot": {"xAxis": {"label": {"color": "#00000000"}}}}),
+	        Style({"plot": {"xAxis"}),
 
 	        Config(
 
-	            {
-
-	                "coordSystem": "polar"}
+	            {"coordSystem": "polar"}
 		))
 
         if st.checkbox("Swap"):
