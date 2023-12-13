@@ -4,13 +4,8 @@ import plotly as px
 import plotly.graph_objects as go
 from datetime import datetime, timedelta
 from streamlit_vizzu import VizzuChart, Data, Config, Style
-from ipyvizzu import Chart, Data, Config, Style
-from ipyvizzustory import Story, Slide, Step
-from streamlit.components.v1 import html
 import base64
-from st_aggrid import AgGrid
 import io
-from IPython.display import HTML, display
 import hydralit_components as hc
 
 #can apply customisation to almost all the properties of the card, including the progress bar
@@ -90,121 +85,20 @@ if uploaded_file is not None:
         
         data.add_df(bar)
         
-        # Create a chart object
-        chart = Chart(width="750px", height="400px", display="manual")
-        
         # Animate the data
         chart.animate(data)
-                
-        # Create a Story object with auto_play option
-        story = Story(data=data)      
 
-        story.set_size("100%", "450px")
-              
-        slide5 = Slide()
-        
-        slide5.add_step(
-        
-            Step(
-        
-                Style({"plot": {"yAxis": {"title": {"color": "#00000000"}}}}),
-        
-                Config(
-        
-                    {
-        
-                        "x": "BRANCH",
-        
-                        "y": ["GROSS PREMIUM"],
-                        
-                        "color": "BRANCH",
-        
-                        "split": False,
-        
-                        "legend": "color",
-        
-                    }
-        
-                ),
-        
-            )
-        
-        )
-        
-        slide5.add_step(
-        
-            Step(
-        
-                Style({"plot": {"marker": {"label": {"fontSize": "1.1em"}}}}),
-        
-                Config(
-        
-                    {"y": "GROSS PREMIUM", "title": "More than 700 people voted"}
-        
-                ),
-        
-            )
-        
-        )
-        
-        story.add_slide(slide5)
-        
-        slide4 = Slide()
-        
-        slide4.add_step(
-        
-            Step(
-        
-                Config(
-        
-                    {
-        
-                        "x": ["Percentage", "BRANCH"],
-        
-                        "y": None,
-                        
-                        "color": "BRANCH",
-        
-                        "label": "Percentage",
-        
-                    }
-        
-                )
-        
-            )
-        
-        )
-        
-        slide4.add_step(
-        
-            Step(
-        
-                Style({"plot": {"xAxis": {"label": {"color": "#00000000"}}}}),
-        
-                Config(
-        
-                    {
-        
-                        "coordSystem": "polar",
-        
-                        "title": "More than two-third of respondents present "
-        
-                        + "at least once per month",
-        
-                    }
-        
-                ),
-        
-            )
-        
-        )
-        
-        story.add_slide(slide4)
+        chart.animate(Config({"x": "BRANCH", "y": "GROSS PREMIUM", "title": "BRANCH PERFORMANCE"}))
+
+        if st.checkbox("Swap"):
+            chart.animate(Config({"x": "BRANCH", "y": "GROSS PREMIUM", "title": "BRANCH PERFORMANCE"}))
 
         output = chart.show()
-        
-        st.write(output)
 
+        if output is not None and "marker" in output:
+            st.write("Value of clicked bar", output['Marker']["Values"]["GROSS PREMIUM"])
+            
+            
         gp = newdf['GROSS PREMIUM'].sum()
         total_gp = "Ksh. {:,.0f}".format(gp)
 
