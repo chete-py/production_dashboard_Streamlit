@@ -54,7 +54,13 @@ if uploaded_file is not None:
     new_business_percent = ((new_business['GROSS PREMIUM'].sum())/(newdf['GROSS PREMIUM'].sum()) * 100)
     nbp = "{:,.0f}".format(new_business_percent)
     
-    #preview = newdf.groupby('INTERMEDIARY')['GROSS PREMIUM'].sum()
+   
+    # Get the current date
+    current_date = datetime.now()
+
+    # Create a pandas Timestamp object
+    timestamp = pd.Timestamp(current_date)
+
     current_month = timestamp.strftime('%B')
         
     current_month_name = current_month.upper()
@@ -223,18 +229,6 @@ if uploaded_file is not None:
         target['MONTH'] = target['MONTH'].str.strip() 
         target['RENEWALS'] = target['RENEWALS'].str.strip() 
         target['NEW TM'] = target['NEW TM'].str.strip() 
-        # Get the current date
-        current_date = datetime.now()
-
-        # Create a pandas Timestamp object
-        timestamp = pd.Timestamp(current_date)
-
-        # Extract the month name
-        current_month = timestamp.strftime('%B')
-        
-        current_month_name = current_month.upper()
-
-
         selected_manager =st.sidebar.selectbox("Choose TM", unique)
 
         for_cancellation =  cancellations[(cancellations['NEW TM'] == selected_manager) & (cancellations['MONTH NAME'] == current_month_name)]
