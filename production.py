@@ -123,7 +123,7 @@ if uploaded_file is not None:
 
        
         if st.checkbox("Swap"):
-            chart.animate(Config({"x":"GROSS PREMIUM", "y": "BRANCH", "title": "PRODUCTION PER BRANCH", "color": "BRANCH"}))
+            chart.animate(Config({"x":"GROSS PREMIUM", "y": "BRANCH", "title": "PRODUCTION PER BRANCH", "color": "BRANCH",  "label":"GROSS PREMIUM"}))
 
         
 
