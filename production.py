@@ -50,6 +50,8 @@ if uploaded_file is not None:
     newdf.loc[newdf['INTERMEDIARY'].str.contains('REIN', case=False, na=False), 'NEW TM'] = 'REINSURANCE'
     newdf = newdf[["TRANSACTION DATE", "BRANCH", "INTERMEDIARY TYPE", "INTERMEDIARY", "PRODUCT", "SALES TYPE", "SUM INSURED", "GROSS PREMIUM", "NET BALANCE", "RECEIPTS", "NEW TM", "MONTH NAME"]]
     cancellations = newdf[newdf['SUM INSURED'] < 0]
+    new_business = newdf[newdf['SALES TYPE'] == 'New Business']
+    new_business_percent = (new_business['GROSS PREMIUM']/newdf['GROSS PREMIUM'] * 100)
     #preview = newdf.groupby('INTERMEDIARY')['GROSS PREMIUM'].sum()
 
     # Group by and sum with additional text columns
@@ -108,7 +110,7 @@ if uploaded_file is not None:
             hc.info_card(title='Credit', content=f'{total_credit}', sentiment='neutral',bar_value=55, content_text_size = 'small', title_text_size='small')
 
         with cc[3]:
-            hc.info_card(title='Cancelled', content=f'{amount_cancelled}',bar_value=2, title_text_size='small', content_text_size = 'small', theme_override=theme_bad)
+            hc.info_card(title='New Business', content=f'{new_business_percent}%',bar_value=2, title_text_size='small', content_text_size = 'small', theme_override=theme_bad)
 
         with cc[4]:
             hc.info_card(title='Portfolio Mix',content= f'{mix_result}% Motor',key='sec',bar_value=5, content_text_size = 'small', sentiment='good', title_text_size='small')
