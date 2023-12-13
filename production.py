@@ -111,7 +111,7 @@ if uploaded_file is not None:
             hc.info_card(title='Credit', content=f'{total_credit}', sentiment='neutral',bar_value=55, content_text_size = 'small', title_text_size='small')
 
         with cc[3]:
-            hc.info_card(title='New Business', content=f'{nbp}%',bar_value=44, title_text_size='small', sentiment='good',  content_text_size = 'small', theme_override=theme_good)
+            hc.info_card(title='New Business', content=f'{nbp}%',bar_value=44, title_text_size='small', sentiment='good',  content_text_size = 'small')
 
         with cc[4]:
             hc.info_card(title='Portfolio Mix',content= f'{mix_result}% Motor',key='sec',bar_value=5, content_text_size = 'small', sentiment='good', title_text_size='small')
