@@ -119,16 +119,17 @@ if uploaded_file is not None:
         # Animate the data
         chart.animate(data)
 
-        chart.animate(Config({"x": "BRANCH", "y": "GROSS PREMIUM", "title": "BRANCH PERFORMANCE"}))
+        chart.animate(Config({"x": "BRANCH", "y": "GROSS PREMIUM", "title": "PRODUCTION PER BRANCH"}))
 
         if st.checkbox("Swap"):
-            chart.animate(Config({"x":"GROSS PREMIUM", "y": "BRANCH", "title": "BRANCH PERFORMANCE"}))
+            chart.animate(Config({"x":"GROSS PREMIUM", "y": "BRANCH", "title": "PRODUCTION PER BRANCH"}))
 
         output = chart.show()
 
         if output is not None and "marker" in output:
             st.write("Value of Clicked Branch:", output['marker']["values"]["GROSS PREMIUM"])
-            
+
+        <br>
 
         sorted_prev = pd.DataFrame(preview_sorted)
 
