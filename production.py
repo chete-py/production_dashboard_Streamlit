@@ -51,7 +51,7 @@ if uploaded_file is not None:
     newdf = newdf[["TRANSACTION DATE", "BRANCH", "INTERMEDIARY TYPE", "INTERMEDIARY", "PRODUCT", "SALES TYPE", "SUM INSURED", "GROSS PREMIUM", "NET BALANCE", "RECEIPTS", "NEW TM", "MONTH NAME"]]
     cancellations = newdf[newdf['SUM INSURED'] < 0]
     new_business = newdf[newdf['SALES TYPE'] == 'New Business']
-    new_business_percent = (new_business['GROSS PREMIUM']/newdf['GROSS PREMIUM'] * 100)
+    new_business_percent = ((new_business['GROSS PREMIUM'].sum())/(newdf['GROSS PREMIUM'].sum()) * 100)
     #preview = newdf.groupby('INTERMEDIARY')['GROSS PREMIUM'].sum()
 
     # Group by and sum with additional text columns
