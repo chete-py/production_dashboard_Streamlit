@@ -2,5 +2,5 @@ openpyxl
 plotly
 hydralit_components
 streamlit-aggrid
-ipyvizzu
+streamlit_vizzu
 ipyvizzu-story
