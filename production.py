@@ -190,7 +190,7 @@ if uploaded_file is not None:
 
         chart = VizzuChart()
         
-        bar = newdf.groupby('BRANCH')['GROSS PREMIUM'].sum().reset_index()
+        bar = newdf.groupby('NEW TM')['GROSS PREMIUM'].sum().reset_index()
 
         data = Data()
 
@@ -199,11 +199,11 @@ if uploaded_file is not None:
         # Animate the data
         chart.animate(data)
 
-        chart.animate(Config({"x": "NEW TM", "y": "GROSS PREMIUM", "title": "TERRITORIAL MANAGERS PRODUCTION", "color": "BRANCH",  "label":"GROSS PREMIUM"}), delay=2)
+        chart.animate(Config({"x": "NEW TM", "y": "GROSS PREMIUM", "title": "TERRITORIAL MANAGERS PRODUCTION", "color": "NEW TM",  "label":"GROSS PREMIUM"}), delay=2)
 
        
         if st.checkbox("Swap"):
-            chart.animate(Config({"x":"GROSS PREMIUM", "y": "NEW TM", "title": "TERRITORIAL MANAGERS PRODUCTION", "color": "BRANCH",  "label":"GROSS PREMIUM"}))
+            chart.animate(Config({"x":"GROSS PREMIUM", "y": "NEW TM", "title": "TERRITORIAL MANAGERS PRODUCTION", "color": "NEW TM",  "label":"GROSS PREMIUM"}))
 
         
 
