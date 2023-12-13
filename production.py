@@ -52,6 +52,8 @@ if uploaded_file is not None:
     cancellations = newdf[newdf['SUM INSURED'] < 0]
     new_business = newdf[newdf['SALES TYPE'] == 'New Business']
     new_business_percent = ((new_business['GROSS PREMIUM'].sum())/(newdf['GROSS PREMIUM'].sum()) * 100)
+    nbp = "{:,.0f}".format(new_business_percent)
+    
     #preview = newdf.groupby('INTERMEDIARY')['GROSS PREMIUM'].sum()
 
     # Group by and sum with additional text columns
@@ -109,7 +111,7 @@ if uploaded_file is not None:
             hc.info_card(title='Credit', content=f'{total_credit}', sentiment='neutral',bar_value=55, content_text_size = 'small', title_text_size='small')
 
         with cc[3]:
-            hc.info_card(title='New Business', content=f'{new_business_percent}%',bar_value=2, title_text_size='small', content_text_size = 'small', theme_override=theme_bad)
+            hc.info_card(title='New Business', content=f'{nbp}%',bar_value=2, title_text_size='small', content_text_size = 'small', theme_override=theme_good)
 
         with cc[4]:
             hc.info_card(title='Portfolio Mix',content= f'{mix_result}% Motor',key='sec',bar_value=5, content_text_size = 'small', sentiment='good', title_text_size='small')
@@ -139,8 +141,7 @@ if uploaded_file is not None:
 
         st.dataframe(sorted_prev)
 
-        st.write(new_business)
-        st.write(new_business_percent)
+       
 
 
     if view == 'Branch':
