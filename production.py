@@ -201,12 +201,10 @@ if uploaded_file is not None:
         chart.animate(data)
 
         chart.animate(Config({"x": "NEW TM", "y": "GROSS PREMIUM", "title": "TERRITORIAL MANAGERS PRODUCTION", "color": "NEW TM",  "label":"GROSS PREMIUM"}), delay=2)
-
        
         if st.checkbox("Swap"):
             chart.animate(Config({"x":"GROSS PREMIUM", "y": "NEW TM", "title": "TERRITORIAL MANAGERS PRODUCTION", "color": "NEW TM",  "label":"GROSS PREMIUM"}))
-
-        
+       
 
         output = chart.show()
 
