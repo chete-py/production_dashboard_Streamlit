@@ -123,7 +123,7 @@ if uploaded_file is not None:
         chart.animate(data)
 
         chart.animate(
-            Style({"plot": {"label": {"fontSize": "3.1em"}}}),
+            Style({"label": {"fontSize": "3.1em"}}),
             Config({"x": "BRANCH", "y": "GROSS PREMIUM", "title": "PRODUCTION PER BRANCH", "color": "BRANCH",  "label":"GROSS PREMIUM"}), delay=2)
 
        
