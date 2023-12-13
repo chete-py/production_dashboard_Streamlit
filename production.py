@@ -71,7 +71,7 @@ if uploaded_file is not None:
         nonmotor = total_motor_produce[total_motor_produce['STAMP DUTY'] == 'NON-MOTOR']
         motorproduce = motor['GROSS PREMIUM'].sum()
         nonmotorproduce = nonmotor['GROSS PREMIUM'].sum()
-        amount_cancelled = "Ksh. {:,.0f}".format(cancelled)
+        
 
         totalmix = (motorproduce+nonmotorproduce)
         total_mix_result = "{:,.0f}".format(totalmix)
