@@ -129,7 +129,7 @@ if uploaded_file is not None:
         if output is not None and "marker" in output:
             st.write("Value of Clicked Branch:", output['marker']["values"]["GROSS PREMIUM"])
 
-        <br>
+        st.markdown("")
 
         sorted_prev = pd.DataFrame(preview_sorted)
 
