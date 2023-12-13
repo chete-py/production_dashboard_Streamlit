@@ -189,25 +189,17 @@ if uploaded_file is not None:
         with cc[4]:
             hc.info_card(title='Portfolio Mix',content=f'{mix_result}% Motor ',key='sec', bar_value=5, content_text_size = 'small', sentiment='good', title_text_size='small')
 
-        chart = VizzuChart()        
-    
-        data = Data()
         
         bar_df = filtered_df.groupby('NEW TM')['GROSS PREMIUM'].sum().reset_index()
         
-        data.add_df(bar_df)
-        
-        # Animate the data
-        chart.animate(data)
+        fig = go.Figure(data =[go.Bar(
+                 x= bar["NEW TM"],
+                 y= bar["GROSS PREMIUM"]        
+                 )])
 
-        chart.animate(Config({"x": "NEW TM", "y": "GROSS PREMIUM", "title": "TERRITORIAL MANAGERS PRODUCTION", "color": "NEW TM",  "label":"GROSS PREMIUM"}), delay=2)
-       
-        if st.checkbox("Swap"):
-            chart.animate(Config({"x":"GROSS PREMIUM", "y": "NEW TM", "title": "TERRITORIAL MANAGERS PRODUCTION", "color": "NEW TM",  "label":"GROSS PREMIUM"}))
-       
+        fig.update_layout(title={'text': 'TERRITORIAL MANAGER PERFORMANCE IN BRANCH', 'x': 0.375, 'xanchor': 'center'}) 
 
-        output = chart.show()
-
+        st.plotly_chart(fig)
 
     if view == 'Territorial Manager':
         unique = newdf['NEW TM'].unique()
