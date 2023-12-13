@@ -190,7 +190,7 @@ if uploaded_file is not None:
         credit = filtered_df['NET BALANCE'].sum()
         total_credit = "Ksh. {:,.0f}".format(credit)
 
-        st.subheader(f"{selected_branch} Month To Date Production")
+        st.subheader(f"{selected_branch} Branch Month To Date Production")
 
         cc = st.columns(5)
 
