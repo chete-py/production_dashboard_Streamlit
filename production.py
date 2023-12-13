@@ -124,7 +124,7 @@ if uploaded_file is not None:
 
         chart.animate(
 
-        Config({"coordSystem": "polar", "sort": "byValue"}), delay=1
+        Config({"coordSystem": "polar"}), delay=1
 
         )
 
