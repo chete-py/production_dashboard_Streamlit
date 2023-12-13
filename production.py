@@ -133,7 +133,7 @@ if uploaded_file is not None:
 	       #          "label": "Percentage"}))
         
         chart.animate( 
-	        Style({"plot": {"xAxis"}),
+	        Style({"plot": {"xAxis"}}),
 
 	        Config(
 
