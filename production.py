@@ -188,13 +188,13 @@ if uploaded_file is not None:
         with cc[4]:
             hc.info_card(title='Portfolio Mix',content=f'{mix_result}% Motor ',key='sec', bar_value=5, content_text_size = 'small', sentiment='good', title_text_size='small')
 
-        chart = VizzuChart()
-        
-        bar = newdf.groupby('NEW TM')['GROSS PREMIUM'].sum().reset_index()
-
+        chart = VizzuChart()        
+    
         data = Data()
 
         bar['Percentage'] = (bar['GROSS PREMIUM']/(bar['GROSS PREMIUM'].sum()) * 100)
+
+        data.add_df(bar)
         
         # Animate the data
         chart.animate(data)
