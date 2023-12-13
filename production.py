@@ -123,7 +123,10 @@ if uploaded_file is not None:
         chart.animate(data)
 
         chart.animate(
-           
+            (vizzu.pie()
+             .angle("Percentage")
+             .by("BRANCH")
+            ),
             Config({"x": "BRANCH", "y": "GROSS PREMIUM", "title": "PRODUCTION PER BRANCH", "color": "BRANCH",  "label":"GROSS PREMIUM"}),delay=1.5)
            
 
