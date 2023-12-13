@@ -192,7 +192,8 @@ if uploaded_file is not None:
         chart = VizzuChart()        
     
         data = Data()
-
+        
+        bar_df = filtered_df.groupby('NEW TM')['GROSS PREMIUM'].sum().reset_index()
         bar_df['Percentage'] = (bar_df['GROSS PREMIUM']/(bar_df['GROSS PREMIUM'].sum()) * 100)
 
         data.add_df(bar_df)
