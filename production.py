@@ -122,7 +122,9 @@ if uploaded_file is not None:
         # Animate the data
         chart.animate(data)
 
-        chart.animate(Config({"x": "BRANCH", "y": "GROSS PREMIUM", "title": "PRODUCTION PER BRANCH", "color": "BRANCH",  "label":"GROSS PREMIUM"}), delay=2)
+        chart.animate(
+            Style({"plot": {"label": {"fontSize": "1.1em"}}}),
+            Config({"x": "BRANCH", "y": "GROSS PREMIUM", "title": "PRODUCTION PER BRANCH", "color": "BRANCH",  "label":"GROSS PREMIUM"}), delay=2)
 
        
         if st.checkbox("Swap"):
