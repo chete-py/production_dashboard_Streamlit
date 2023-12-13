@@ -55,6 +55,9 @@ if uploaded_file is not None:
     nbp = "{:,.0f}".format(new_business_percent)
     
     #preview = newdf.groupby('INTERMEDIARY')['GROSS PREMIUM'].sum()
+    current_month = timestamp.strftime('%B')
+        
+    current_month_name = current_month.upper()
 
     # Group by and sum with additional text columns
     preview = newdf.groupby('INTERMEDIARY').agg({
@@ -68,6 +71,7 @@ if uploaded_file is not None:
     preview_sorted = preview.sort_values(by='GROSS PREMIUM', ascending=False).head(5)
 
     if view == 'Company':
+        st.subheader(f"{current_month_name} PRODUCTION DASHBOARD")
 
         motor = total_motor_produce[total_motor_produce['STAMP DUTY'] == 'MOTOR']
         nonmotor = total_motor_produce[total_motor_produce['STAMP DUTY'] == 'NON-MOTOR']
