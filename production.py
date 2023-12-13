@@ -200,7 +200,9 @@ if uploaded_file is not None:
         
         story.add_slide(slide4)
 
-        html(chart._repr_html_(),width=750, height=500) 
+        st.pydeck_chart(chart)
+
+        # html(chart._repr_html_(),width=750, height=500) 
         
 
         gp = newdf['GROSS PREMIUM'].sum()
