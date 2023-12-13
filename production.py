@@ -93,12 +93,12 @@ if uploaded_file is not None:
         chart.animate(Config({"x": "BRANCH", "y": "GROSS PREMIUM", "title": "BRANCH PERFORMANCE"}))
 
         if st.checkbox("Swap"):
-            chart.animate(Config({"x": "BRANCH", "y": "GROSS PREMIUM", "title": "BRANCH PERFORMANCE"}))
+            chart.animate(Config({"x":"GROSS PREMIUM", "y": "BRANCH", "title": "BRANCH PERFORMANCE"}))
 
         output = chart.show()
 
         if output is not None and "marker" in output:
-            st.write("Value of clicked bar", output['Marker']["Values"]["GROSS PREMIUM"])
+            st.write("Value of clicked bar", output['marker']["Values"]["GROSS PREMIUM"])
             
             
         gp = newdf['GROSS PREMIUM'].sum()
