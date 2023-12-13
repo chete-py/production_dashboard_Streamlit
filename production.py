@@ -159,9 +159,10 @@ if uploaded_file is not None:
         mix = (motor/total_mix)*100
         mix_result = "{:.0f}".format(mix)
 
-        bar = filtered_df.groupby('NEW TM')['GROSS PREMIUM'].sum().reset_index()
+        bar_df = filtered_df.groupby('NEW TM')['GROSS PREMIUM'].sum().reset_index()
 
         gp = filtered_df['GROSS PREMIUM'].sum()
+        
         total_gp = "Ksh. {:,.0f}".format(gp)
 
         receipted = filtered_df['RECEIPTS'].sum()
@@ -192,9 +193,9 @@ if uploaded_file is not None:
     
         data = Data()
 
-        bar['Percentage'] = (bar['GROSS PREMIUM']/(bar['GROSS PREMIUM'].sum()) * 100)
+        bar_df['Percentage'] = (bar_df['GROSS PREMIUM']/(bar_df['GROSS PREMIUM'].sum()) * 100)
 
-        data.add_df(bar)
+        data.add_df(bar_df)
         
         # Animate the data
         chart.animate(data)
