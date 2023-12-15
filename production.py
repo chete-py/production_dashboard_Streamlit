@@ -265,7 +265,7 @@ if uploaded_file is not None:
         day_receipts = most_recent[most_recent['RECEIPTS'] > 0]
         day_receipts_total = day_receipts['RECEIPTS'].sum()
         fom_day_receipts = "Ksh. {:,.0f}".format(day_receipts_total)
-        day_credit = most[filtered_data['NET BALANCE'] > 0]
+        day_credit = most_recent[most_recent['NET BALANCE'] > 0]
         day_credit_total = day_credit['NET BALANCE'].sum()
         fom_day_credit = "Ksh. {:,.0f}".format(day_credit_total)
                
