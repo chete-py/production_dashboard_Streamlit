@@ -262,10 +262,13 @@ if uploaded_file is not None:
 
         day_premium = most_recent['GROSS PREMIUM'].sum()
         fom_day_premium = "Ksh. {:,.0f}".format(day_premium)
-        day_receipts = most_recent['RECEIPTS'].sum()
-        fom_day_receipts = "Ksh. {:,.0f}".format(day_receipts)
-        day_credit = most_recent['NET BALANCE'].sum()
-        fom_day_credit = "Ksh. {:,.0f}".format(day_credit)
+        day_receipts = most_recent[most_recent['RECEIPTS'] > 0]
+        day_receipts_total = day_receipts['RECEIPTS'].sum()
+        fom_day_receipts = "Ksh. {:,.0f}".format(day_receipts_total)
+        day_credit = most[filtered_data['NET BALANCE'] > 0]
+        day_credit_total = day_credit['NET BALANCE'].sum()
+        fom_day_credit = "Ksh. {:,.0f}".format(day_credit_total)
+               
 
         monthly_cancelled = for_cancellation['GROSS PREMIUM'].sum()
         amount_cancelled = "Ksh. {:,.0f}".format(monthly_cancelled)
