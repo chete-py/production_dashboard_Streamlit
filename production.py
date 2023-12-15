@@ -290,10 +290,12 @@ if uploaded_file is not None:
             
         week_premium = filtered_data['GROSS PREMIUM'].sum()
         fom_week_premium = "Ksh. {:,.0f}".format(week_premium)
-        week_receipts = filtered_data['RECEIPTS'][filtered_data['RECEIPTS'] > 0].sum()
-        fom_week_receipts = "Ksh. {:,.0f}".format(week_receipts)
-        week_credit = filtered_data['NET BALANCE'][filtered_data['NET BALANCE'] > 0].sum()
-        fom_week_credit = "Ksh. {:,.0f}".format(week_credit)   
+        week_receipts = filtered_data[filtered_data['RECEIPTS'] > 0]
+        week_receipts_total = week_receipts['RECEIPTS'].sum()
+        fom_week_receipts = "Ksh. {:,.0f}".format(week_receipts_total)
+        week_credit = filtered_data[filtered_data['NET BALANCE'] > 0]
+        week_credit_total = filtered_data['NET BALANCE'].sum()
+        fom_week_credit = "Ksh. {:,.0f}".format(week_credit_total)   
         week_cancelled = filtered_data[filtered_data['SUM INSURED'] < 0]
         total_cancelled = week_cancelled['GROSS PREMIUM'].sum()
         week_total_cancelled = "Ksh. {:,.0f}".format(total_cancelled)   
