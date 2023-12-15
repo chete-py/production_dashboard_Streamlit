@@ -361,5 +361,5 @@ if uploaded_file is not None:
 
 
 
-        st.write('filtered_df')
+        st.dataframe(filtered_df)
 
