@@ -49,7 +49,7 @@ if uploaded_file is not None:
     newdf = pd.merge(thedf, lastdf, on='INTERMEDIARY', how='left')
     newdf.loc[newdf['INTERMEDIARY'].str.contains('REIN', case=False, na=False), 'NEW TM'] = 'REINSURANCE'
     newdf = newdf[["TRANSACTION DATE", "BRANCH", "INTERMEDIARY TYPE", "INTERMEDIARY", "PRODUCT", "SALES TYPE", "SUM INSURED", "GROSS PREMIUM", "NET BALANCE", "RECEIPTS", "NEW TM", "MONTH NAME"]]
-    cancellations = newdf[newdf['SUM INSURED'] < 0]
+    cancellations = newdf[newdf['GROSS PREMIUM'] < 0]
     new_business = newdf[newdf['SALES TYPE'] == 'New Business']
     new_business_percent = ((new_business['GROSS PREMIUM'].sum())/(newdf['GROSS PREMIUM'].sum()) * 100)
     nbp = "{:,.0f}".format(new_business_percent)
