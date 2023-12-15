@@ -254,6 +254,13 @@ if uploaded_file is not None:
         fom_month_receipts = "Ksh. {:,.0f}".format(month_receipts)
         month_credit = filtered_df['NET BALANCE'].sum()
         fom_month_credit = "Ksh. {:,.0f}".format(month_credit)
+        month_receipts = filtered_df[filtered_df['RECEIPTS'] > 0]
+        month_receipts_total = month_receipts['RECEIPTS'].sum()
+        fom_month_receipts = "Ksh. {:,.0f}".format(month_receipts_total)
+        month_credit = filtered_df[filtered_df['NET BALANCE'] > 0]
+        month_credit_total = month_credit['NET BALANCE'].sum()
+        fom_week_credit = "Ksh. {:,.0f}".format(month_credit_total) 
+        
 
         most_current_date = newdf['TRANSACTION DATE'].max()
         most_recent = filtered_df[filtered_df['TRANSACTION DATE'] == most_current_date]
