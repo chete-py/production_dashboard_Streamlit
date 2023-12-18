@@ -10,7 +10,7 @@ import hydralit_components as hc
 
 #can apply customisation to almost all the properties of the card, including the progress bar
 theme_bad = {'bgcolor': '#FFF0F0','title_color': 'red','content_color': 'red','icon_color': 'red', 'icon': 'fa fa-times-circle'}
-theme_neutral = {'bgcolor': '#f9f9f9','title_color': 'orange','content_color': 'black','icon_color': 'orange', 'icon': 'fa fa-question-circle'}
+theme_neutral = {'bgcolor': '#f9f9f9','title_color': 'orange','content_color': '#222831','icon_color': 'orange', 'icon': 'fa fa-question-circle'}
 theme_good = {'bgcolor': '#EFF8F7','title_color': 'green','content_color': 'green','icon_color': 'green', 'icon': 'fa fa-check-circle'}
 
 st.sidebar.image('corplogo.PNG', use_column_width=True)
@@ -205,7 +205,7 @@ if uploaded_file is not None:
             hc.info_card(title='Credit', content=f'{total_credit}', sentiment='neutral', content_text_size = 'medium', bar_value=55, title_text_size='small')
 
         with cc[3]:
-            hc.info_card(title='Cancelled', content=f'{amount_cancelled}',bar_value=2, title_text_size='small', content_text_size = 'medium')
+            hc.info_card(title='Cancelled', content=f'{amount_cancelled}',bar_value=2, sentiment='bad',title_text_size='small', content_text_size = 'medium')
 
         with cc[4]:
             hc.info_card(title='Portfolio Mix',content=f'{mix_result}% Motor ',key='sec', bar_value=5, content_text_size = 'medium', sentiment='good', title_text_size='small')
