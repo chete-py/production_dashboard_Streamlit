@@ -154,6 +154,8 @@ if uploaded_file is not None:
 
         st.dataframe(sorted_prev)
 
+        st.markdown('**Preview of the Uploaded Data Frame**')
+
         AgGrid(newdf)
        
 
