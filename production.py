@@ -10,7 +10,7 @@ import hydralit_components as hc
 
 #can apply customisation to almost all the properties of the card, including the progress bar
 theme_bad = {'bgcolor': '#FFF0F0','title_color': 'red','content_color': 'red','icon_color': 'red', 'icon': 'fa fa-times-circle'}
-theme_neutral = {'bgcolor': '#f9f9f9','title_color': 'orange','content_color': 'orange','icon_color': 'orange', 'icon': 'fa fa-question-circle'}
+theme_neutral = {'bgcolor': '#f9f9f9','title_color': 'orange','content_color': 'black','icon_color': 'orange', 'icon': 'fa fa-question-circle'}
 theme_good = {'bgcolor': '#EFF8F7','title_color': 'green','content_color': 'green','icon_color': 'green', 'icon': 'fa fa-check-circle'}
 
 st.sidebar.image('corplogo.PNG', use_column_width=True)
