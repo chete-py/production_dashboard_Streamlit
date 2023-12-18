@@ -334,7 +334,7 @@ if uploaded_file is not None:
             hc.info_card(title='Month To Date On Credit', content=f'{fom_month_credit}', sentiment='neutral',  title_text_size='small', bar_value=55, content_text_size='medium')
 
         with cc[3]:
-            hc.info_card(title='Month To Date Cancellations', content=f'{amount_cancelled}',bar_value=2, title_text_size='small', content_text_size = 'medium')
+            hc.info_card(title='Month To Date Cancellations', content=f'{amount_cancelled}',bar_value=2, key ='month_cancellation', title_text_size='small', content_text_size = 'medium')
 
         cc_row1 = st.columns(4)
 
