@@ -157,7 +157,7 @@ if uploaded_file is not None:
         st.markdown("")
 
         st.markdown('**Preview of the Uploaded Data Frame**')
-        AgGrid(newdf)
+        AgGrid(newdf, theme='fresh')
        
 
 
