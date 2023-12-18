@@ -231,7 +231,6 @@ if uploaded_file is not None:
 
         target['NEW TM'] = target['NEW TM'].str.strip()
         target['MONTH'] = target['MONTH'].str.strip() 
-        target['RENEWALS'] = target['RENEWALS'].str.strip() 
         target['NEW TM'] = target['NEW TM'].str.strip() 
         selected_manager =st.sidebar.selectbox("Choose TM", unique)
 
@@ -243,8 +242,6 @@ if uploaded_file is not None:
         filtered_target = target[(target['NEW TM'] == selected_manager) & (target['MONTH'] == current_month_name)]
         total = int(filtered_target['TOTAL'].sum())
         target_total = "{:,.0f}".format(total)
-        target_renewal = filtered_target['RENEWALS'].sum()
-        target_newbizz = filtered_target['NEW TM'].sum()
         daily = (total/20)
         weekly = (total/4)
         target_daily = "{:,.0f}".format(daily)
