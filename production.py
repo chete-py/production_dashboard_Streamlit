@@ -198,19 +198,19 @@ if uploaded_file is not None:
 
         with cc[0]:
         # can just use 'good', 'bad', 'neutral' sentiment to auto color the card
-            hc.info_card(title='Production', content= f'Ksh. {total_mix_result}', content_text_size = 'small',sentiment='good',bar_value=77, title_text_size='small')
+            hc.info_card(title='Production', content= f'Ksh. {total_mix_result}', content_text_size = 'medium',sentiment='good',bar_value=77, title_text_size='small')
 
         with cc[1]:
-            hc.info_card(title='Receipted', content=f'{total_receipted}',bar_value=12, content_text_size = 'small', sentiment='good', title_text_size='small')
+            hc.info_card(title='Receipted', content=f'{total_receipted}',bar_value=12, content_text_size = 'medium', sentiment='good', title_text_size='small')
 
         with cc[2]:
-            hc.info_card(title='Credit', content=f'{total_credit}', sentiment='neutral', content_text_size = 'small', bar_value=55, title_text_size='small')
+            hc.info_card(title='Credit', content=f'{total_credit}', sentiment='neutral', content_text_size = 'medium', bar_value=55, title_text_size='small')
 
         with cc[3]:
-            hc.info_card(title='Cancelled', content=f'{amount_cancelled}',bar_value=2, title_text_size='small', content_text_size = 'small', theme_override=theme_bad)
+            hc.info_card(title='Cancelled', content=f'{amount_cancelled}',bar_value=2, title_text_size='small', content_text_size = 'medium', theme_override=theme_bad)
 
         with cc[4]:
-            hc.info_card(title='Portfolio Mix',content=f'{mix_result}% Motor ',key='sec', bar_value=5, content_text_size = 'small', sentiment='good', title_text_size='small')
+            hc.info_card(title='Portfolio Mix',content=f'{mix_result}% Motor ',key='sec', bar_value=5, content_text_size = 'medium', sentiment='good', title_text_size='small')
 
         
         bar_df = filtered_df.groupby('NEW TM')['GROSS PREMIUM'].sum().reset_index()
@@ -327,31 +327,31 @@ if uploaded_file is not None:
 
         with cc[0]:
         # can just use 'good', 'bad', 'neutral' sentiment to auto color the card
-            hc.info_card(title= 'Month To Date Production', content= f'{fom_month_premium}', sentiment='good',  title_text_size='small', bar_value=77, content_text_size='small')
+            hc.info_card(title= 'Month To Date Production', content= f'{fom_month_premium}', sentiment='good',  title_text_size='small', bar_value=77, content_text_size='medium')
 
         with cc[1]:
-            hc.info_card(title='Month To Date Receipted', content=f'{fom_month_receipts}',bar_value=12,  title_text_size='small', sentiment='good', content_text_size='small')
+            hc.info_card(title='Month To Date Receipted', content=f'{fom_month_receipts}',bar_value=12,  title_text_size='small', sentiment='good', content_text_size='medium')
 
         with cc[2]:
-            hc.info_card(title='Month To Date On Credit', content=f'{fom_month_credit}', sentiment='neutral',  title_text_size='small', bar_value=55, content_text_size='small')
+            hc.info_card(title='Month To Date On Credit', content=f'{fom_month_credit}', sentiment='neutral',  title_text_size='small', bar_value=55, content_text_size='medium')
 
         with cc[3]:
-            hc.info_card(title='Month To Date Cancellations', content=f'{amount_cancelled}',bar_value=2, title_text_size='small', content_text_size = 'small', theme_override=theme_bad)
+            hc.info_card(title='Month To Date Cancellations', content=f'{amount_cancelled}',bar_value=2, title_text_size='small', content_text_size = 'medium', theme_override=theme_bad)
 
         cc_row1 = st.columns(4)
 
         with cc_row1[0]:
         # can just use 'good', 'bad', 'neutral' sentiment to auto color the card
-            hc.info_card(title= 'Week To Date Production', content= f'{fom_week_premium}', key = 'week_premium', sentiment='good',bar_value=77, content_text_size='small', title_text_size='small')
+            hc.info_card(title= 'Week To Date Production', content= f'{fom_week_premium}', key = 'week_premium', sentiment='good',bar_value=77, content_text_size='medium', title_text_size='small')
 
         with cc_row1[1]:
-            hc.info_card(title='Week To Date Receipted', content=f'{fom_week_receipts}', key='week_receipt', bar_value=12, sentiment='good', content_text_size='small',title_text_size='small')
+            hc.info_card(title='Week To Date Receipted', content=f'{fom_week_receipts}', key='week_receipt', bar_value=12, sentiment='good', content_text_size='medium',title_text_size='small')
 
         with cc_row1[2]:
-            hc.info_card(title='Week To Date On Credit', content=f'{fom_week_credit}', key='week_credit', sentiment='neutral',bar_value=55, content_text_size='small', title_text_size='small')
+            hc.info_card(title='Week To Date On Credit', content=f'{fom_week_credit}', key='week_credit', sentiment='neutral',bar_value=55, content_text_size='medium', title_text_size='small')
 
         with cc_row1[3]:
-            hc.info_card(title='Week To Date Cancellations', content=f'{week_total_cancelled}', key='week_cancelled', sentiment='bad',bar_value=55, content_text_size='small',title_text_size='small')
+            hc.info_card(title='Week To Date Cancellations', content=f'{week_total_cancelled}', key='week_cancelled', sentiment='bad',bar_value=55, content_text_size='medium',title_text_size='small')
         
         
         
