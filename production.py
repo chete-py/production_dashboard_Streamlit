@@ -2,6 +2,7 @@ import pandas as pd
 import streamlit as st
 import plotly as px
 from st_aggrid import AgGrid
+from st_aggrid.grid_options_builder import GridOptionsBuilder
 import plotly.graph_objects as go
 from datetime import datetime, timedelta
 from streamlit_vizzu import VizzuChart, Data, Config, Style
@@ -157,6 +158,9 @@ if uploaded_file is not None:
         st.markdown("")
 
         st.markdown('**Preview of the Uploaded Data Frame**')
+
+        gd = GridOptionsBuilder.from_dataframe(newdf)
+        gd.configure_selection(use_checkbox=True)
         AgGrid(newdf)
        
 
