@@ -373,5 +373,5 @@ if uploaded_file is not None:
 
 
 
-        AgGridf(filtered_df)
+        AgGrid(filtered_df)
 
