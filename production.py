@@ -385,5 +385,7 @@ if uploaded_file is not None:
         select = st.radio('', options = ['multiple'])
         gd.configure_selection(selection_mode = select, use_checkbox=True)
         gridoptions = gd.build()
+        st.subheader('**PREVIEW OF {selected_manager}'S DATA**')
+
         AgGrid(griddf2, gridOptions=gridoptions)
 
