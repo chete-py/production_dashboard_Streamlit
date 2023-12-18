@@ -380,7 +380,7 @@ if uploaded_file is not None:
 
 
 
-        griddf2 = fitered_df[["NEW TM", "INTERMEDIARY", "TRANSACTION DATE", "PRODUCT", "GROSS PREMIUM", "NET BALANCE", "RECEIPTS", ]]
+        griddf2 = filtered_df[["NEW TM", "INTERMEDIARY", "TRANSACTION DATE", "PRODUCT", "GROSS PREMIUM", "NET BALANCE", "RECEIPTS", ]]
         gd = GridOptionsBuilder.from_dataframe(griddf2) 
         select = st.radio('', options = ['multiple'])
         gd.configure_selection(selection_mode = select, use_checkbox=True)
