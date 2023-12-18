@@ -161,9 +161,10 @@ if uploaded_file is not None:
 
         gd = GridOptionsBuilder.from_dataframe(newdf)
         
-        gridoptions = gd.build()
+        
         select = st.radio('Selection Type', options = ['single', 'multiple'])
         gd.configure_selection(selection_mode = select, use_checkbox=True)
+        gridoptions = gd.build()
         AgGrid(newdf, gridOptions=gridoptions, AgGridTheme='dark')
        
 
