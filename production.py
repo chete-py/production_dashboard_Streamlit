@@ -1,6 +1,7 @@
 import pandas as pd
 import streamlit as st
 import plotly as px
+from st_aggrid import AgGrid
 import plotly.graph_objects as go
 from datetime import datetime, timedelta
 from streamlit_vizzu import VizzuChart, Data, Config, Style
