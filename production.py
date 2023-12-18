@@ -154,8 +154,6 @@ if uploaded_file is not None:
 
         st.dataframe(sorted_prev)
 
-        st.dataframe(newdf)
-        
         AgGrid(newdf)
        
 
