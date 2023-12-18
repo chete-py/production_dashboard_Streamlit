@@ -359,16 +359,16 @@ if uploaded_file is not None:
 
         with cc_row2[0]:
         # can just use 'good', 'bad', 'neutral' sentiment to auto color the card
-            hc.info_card(title='Yesterday Production', content= f'{fom_day_premium}', sentiment='good',bar_value=77, key='day_premium', content_text_size='small', title_text_size='small')
+            hc.info_card(title='Yesterday Production', content= f'{fom_day_premium}', sentiment='good',bar_value=77, key='day_premium', content_text_size='medium', title_text_size='small')
 
         with cc_row2[1]:
-            hc.info_card(title='Yesterday Receipted', content= f'{fom_day_receipts}',bar_value=12, key='day_receipts', sentiment='good',  content_text_size='small', title_text_size='small')
+            hc.info_card(title='Yesterday Receipted', content= f'{fom_day_receipts}',bar_value=12, key='day_receipts', sentiment='good',  content_text_size='medium', title_text_size='small')
 
         with cc_row2[2]:
-            hc.info_card(title='Yesterday On Credit', content=f'{fom_day_credit}', key='day_credit', sentiment='neutral', bar_value=55, content_text_size='small', title_text_size='small')
+            hc.info_card(title='Yesterday On Credit', content=f'{fom_day_credit}', key='day_credit', sentiment='neutral', bar_value=55, content_text_size='medium', title_text_size='small')
 
         with cc_row2[3]:
-            hc.info_card(title='Yesterday Cancellations', content=f'{amount_daily_cancelled}',bar_value=2, key='cancelled', title_text_size='small', content_text_size = 'small', theme_override=theme_bad)
+            hc.info_card(title='Yesterday Cancellations', content=f'{amount_daily_cancelled}',bar_value=2, key='cancelled', title_text_size='small', content_text_size = 'medium', theme_override=theme_bad)
 
 
 
