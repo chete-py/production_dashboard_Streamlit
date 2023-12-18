@@ -161,7 +161,8 @@ if uploaded_file is not None:
 
         gd = GridOptionsBuilder.from_dataframe(newdf)
         gd.configure_selection(use_checkbox=True)
-        AgGrid(newdf)
+        grid.options = gd.build()
+        AgGrid(newdf, gridOptions=gridoptions)
        
 
 
