@@ -167,7 +167,7 @@ if uploaded_file is not None:
         select = st.radio('Selection Type', options = ['multiple'])
         gd.configure_selection(selection_mode = select, use_checkbox=True)
         gridoptions = gd.build()
-        AgGrid(griddf, gridOptions=gridoptions, fit_columns_on_grid_load=True, AgGridTheme='dark')
+        AgGrid(griddf, gridOptions=gridoptions, AgGridTheme='dark')
        
 
 
