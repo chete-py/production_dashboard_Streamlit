@@ -18,8 +18,6 @@ st.sidebar.image('corplogo.PNG', use_column_width=True)
 uploaded_file = st.sidebar.file_uploader("Upload Production Listing",  type=['csv', 'xlsx', 'xls'], kwargs=None,)
 
 
-
-
 if uploaded_file is not None:
     try:
         if uploaded_file.type == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet":
