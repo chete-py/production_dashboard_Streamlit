@@ -154,7 +154,9 @@ if uploaded_file is not None:
 
         st.dataframe(sorted_prev)
 
-        st.write('**Preview of the Uploaded Data Frame**')
+        st.markdown("")
+
+        st.markdown('**Preview of the Uploaded Data Frame**')
         AgGrid(newdf)
        
 
@@ -371,5 +373,5 @@ if uploaded_file is not None:
 
 
 
-        st.dataframe(filtered_df)
+        AgGridf(filtered_df)
 
