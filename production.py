@@ -207,7 +207,7 @@ if uploaded_file is not None:
             hc.info_card(title='Credit', content=f'{total_credit}', sentiment='neutral', content_text_size = 'medium', bar_value=55, title_text_size='small')
 
         with cc[3]:
-            hc.info_card(title='Cancelled', content=f'{amount_cancelled}',bar_value=2, title_text_size='small', content_text_size = 'medium', theme_override=theme_bad)
+            hc.info_card(title='Cancelled', content=f'{amount_cancelled}',bar_value=2, title_text_size='small', content_text_size = 'medium')
 
         with cc[4]:
             hc.info_card(title='Portfolio Mix',content=f'{mix_result}% Motor ',key='sec', bar_value=5, content_text_size = 'medium', sentiment='good', title_text_size='small')
@@ -336,7 +336,7 @@ if uploaded_file is not None:
             hc.info_card(title='Month To Date On Credit', content=f'{fom_month_credit}', sentiment='neutral',  title_text_size='small', bar_value=55, content_text_size='medium')
 
         with cc[3]:
-            hc.info_card(title='Month To Date Cancellations', content=f'{amount_cancelled}',bar_value=2, title_text_size='small', content_text_size = 'medium', theme_override=theme_bad)
+            hc.info_card(title='Month To Date Cancellations', content=f'{amount_cancelled}',bar_value=2, title_text_size='small', content_text_size = 'medium')
 
         cc_row1 = st.columns(4)
 
@@ -368,7 +368,7 @@ if uploaded_file is not None:
             hc.info_card(title='Yesterday On Credit', content=f'{fom_day_credit}', key='day_credit', sentiment='neutral', bar_value=55, content_text_size='medium', title_text_size='small')
 
         with cc_row2[3]:
-            hc.info_card(title='Yesterday Cancellations', content=f'{amount_daily_cancelled}',bar_value=2, key='cancelled', title_text_size='small', content_text_size = 'medium', theme_override=theme_bad)
+            hc.info_card(title='Yesterday Cancellations', content=f'{amount_daily_cancelled}',bar_value=2, key='cancelled', title_text_size='small', content_text_size = 'medium')
 
 
 
