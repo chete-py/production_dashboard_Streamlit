@@ -159,13 +159,15 @@ if uploaded_file is not None:
 
         st.markdown('**Preview of the Uploaded Data Frame**')
 
-        gd = GridOptionsBuilder.from_dataframe(newdf)
+        griddf = newdf[["TRANSACTION DATE", "BRANCH", "INTERMEDIARY", "PRODUCT", "SUM INSURED", "GROSS PREMIUM", "NET BALANCE", "RECEIPTS", "NEW TM"]]
+
+        gd = GridOptionsBuilder.from_dataframe(griddf)
         
         
         select = st.radio('Selection Type', options = ['multiple'])
         gd.configure_selection(selection_mode = select, use_checkbox=True)
         gridoptions = gd.build()
-        AgGrid(newdf, gridOptions=gridoptions, fit_columns_on_grid_load=True, AgGridTheme='dark')
+        AgGrid(griddf, gridOptions=gridoptions, fit_columns_on_grid_load=True, AgGridTheme='dark')
        
 
 
