@@ -160,8 +160,10 @@ if uploaded_file is not None:
         st.markdown('**Preview of the Uploaded Data Frame**')
 
         gd = GridOptionsBuilder.from_dataframe(newdf)
-        gd.configure_selection(use_checkbox=True)
+        
         gridoptions = gd.build()
+        selection = st.radio('Selection Type', options = ['multiple'])
+        gd.configure_selection(selection_mode = selection, use_checkbox=True)
         AgGrid(newdf, gridOptions=gridoptions, AgGridTheme='dark')
        
 
