@@ -172,8 +172,8 @@ if uploaded_file is not None:
         st.subheader("**INTERMEDIARIES WITH THE HIGHEST PRODUCTION**")
         st.write(prev)
         
-        with card_container(key="chart2"):
-            ui.table(data=prev)
+        #with card_container(key="chart2"):
+            #ui.table(data=prev)
 
         st.markdown("")
 
