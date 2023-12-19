@@ -241,7 +241,6 @@ if uploaded_file is not None:
         bar_df = filtered_df.groupby('NEW TM')['GROSS PREMIUM'].sum().reset_index()
         
         fig = go.Figure(data =[go.Bar(
-                 margin=dict(l=50, r=50, t=50, b=50) ,
                  x= bar_df["NEW TM"],
                  y= bar_df["GROSS PREMIUM"]        
                  )])
