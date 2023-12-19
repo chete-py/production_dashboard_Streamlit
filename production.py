@@ -2,6 +2,8 @@ import pandas as pd
 import streamlit as st
 import plotly as px
 from st_aggrid import AgGrid
+import streamlit_shadcn_ui as ui
+from local_components import card_container
 from st_aggrid.grid_options_builder import GridOptionsBuilder
 import plotly.graph_objects as go
 from datetime import datetime, timedelta
@@ -122,23 +124,24 @@ if uploaded_file is not None:
         credit = newdf['NET BALANCE'].sum()
         total_credit = "Ksh. {:,.0f}".format(credit)
 
-        cc = st.columns(5)
+        with card_container(key="chart1"):
+            cc = st.columns(5)
 
-        with cc[0]:
-        # can just use 'good', 'bad', 'neutral' sentiment to auto color the card
-            hc.info_card(title='Production', content= f'Ksh. {total_mix_result}', sentiment='good',bar_value=77, content_text_size = 'medium', title_text_size='small')
-
-        with cc[1]:
-            hc.info_card(title='Receipted', content=f'{total_receipted}',bar_value=12, sentiment='good', content_text_size = 'medium', title_text_size='small')
-
-        with cc[2]:
-            hc.info_card(title='Credit', content=f'{total_credit}', sentiment='neutral',bar_value=55, content_text_size = 'medium', title_text_size='small')
-
-        with cc[3]:
-            hc.info_card(title='New Business', content=f'{nbp}%',bar_value=44, title_text_size='small', sentiment='good',  content_text_size = 'medium')
-
-        with cc[4]:
-            hc.info_card(title='Portfolio Mix',content= f'{mix_result}% Motor',key='sec',bar_value=75, content_text_size = 'medium', sentiment='good', title_text_size='small')
+            with cc[0]:
+            # can just use 'good', 'bad', 'neutral' sentiment to auto color the card
+                hc.info_card(title='Production', content= f'Ksh. {total_mix_result}', sentiment='good',bar_value=77, content_text_size = 'medium', title_text_size='small')
+    
+            with cc[1]:
+                hc.info_card(title='Receipted', content=f'{total_receipted}',bar_value=12, sentiment='good', content_text_size = 'medium', title_text_size='small')
+    
+            with cc[2]:
+                hc.info_card(title='Credit', content=f'{total_credit}', sentiment='neutral',bar_value=55, content_text_size = 'medium', title_text_size='small')
+    
+            with cc[3]:
+                hc.info_card(title='New Business', content=f'{nbp}%',bar_value=44, title_text_size='small', sentiment='good',  content_text_size = 'medium')
+    
+            with cc[4]:
+                hc.info_card(title='Portfolio Mix',content= f'{mix_result}% Motor',key='sec',bar_value=75, content_text_size = 'medium', sentiment='good', title_text_size='small')
             
        
         data.add_df(bar)
