@@ -183,6 +183,12 @@ if uploaded_file is not None:
         gd.configure_selection(selection_mode = select, use_checkbox=True)
         gridoptions = gd.build()
         AgGrid(griddf, gridOptions=gridoptions)
+
+        if st.button("Download CSV"):
+            csv_data = griddf.to_csv(index=False, encoding='utf-8')
+            b64 = base64.b64encode(csv_data.encode()).decode()
+            href = f'<a href="data:file/csv;base64,{b64}" download="aggregate_production.csv">Download CSV</a>'
+            st.markdown(href, unsafe_allow_html=True) 
        
 
 
@@ -410,4 +416,10 @@ if uploaded_file is not None:
         st.subheader(f"**PREVIEW OF {selected_manager}'S DATA**")
 
         AgGrid(griddf2, gridOptions=gridoptions)
+
+        if st.button("Download CSV"):
+            csv_data = griddf2.to_csv(index=False, encoding='utf-8')
+            b64 = base64.b64encode(csv_data.encode()).decode()
+            href = f'<a href="data:file/csv;base64,{b64}" download="{selected_manager}.csv">Download CSV</a>'
+            st.markdown(href, unsafe_allow_html=True) 
 
