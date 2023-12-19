@@ -346,8 +346,10 @@ if uploaded_file is not None:
         })
         
         # Display the table
+    
         with card_container(key="chart"):
-            st.write(table_data.style.set_properties(**{'text-align': 'center'}).to_html(index=False, escape=False), unsafe_allow_html=True)
+            ui.table(data=table_data)
+            #st.write(table_data.style.set_properties(**{'text-align': 'center'}).to_html(index=False, escape=False), unsafe_allow_html=True)
                 
         st.markdown("")
         
