@@ -168,7 +168,7 @@ if uploaded_file is not None:
 
         sorted_prev = pd.DataFrame(preview_sorted)
        
-        st.subheader("**INTERMEDIARIES WITH THE HIGHEST PRODUCTION**")
+        st.subheader("**Intermediaries with the Highest Production**")
         st.dataframe(sorted_prev)
         
         st.markdown("")
