@@ -170,10 +170,10 @@ if uploaded_file is not None:
         #prev = sorted_prev['NEW TM', 'BRANCH', 'INTERMEDIARY', 'GROSS PREMIUM']
 
         st.subheader("**INTERMEDIARIES WITH THE HIGHEST PRODUCTION**")
-        st.write(sorted_prev)
+        st.dataframe(sorted_prev)
         
-        #with card_container(key="chart2"):
-            #ui.table(data=prev)
+        with card_container(key="chart2"):
+            ui.table(data=sorted_prev)
 
         st.markdown("")
 
