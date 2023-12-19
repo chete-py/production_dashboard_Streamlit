@@ -170,7 +170,8 @@ if uploaded_file is not None:
 
         st.markdown("**INTERMEDIARIES WITH THE HIGHEST PRODUCTION**")
 
-        st.dataframe(sorted_prev)
+        with card_container(key="chart2"):
+            ui.table(data=sorted_prev)
 
         st.markdown("")
 
