@@ -16,6 +16,7 @@ theme_neutral = {'bgcolor': '#e8d5b7','title_color': 'orange','content_color': '
 theme_good = {'bgcolor': '#EFF8F7','title_color': 'green','content_color': 'green','icon_color': 'green', 'icon': 'fa fa-check-circle'}
 
 st.sidebar.image('corplogo.PNG', use_column_width=True)
+st.set_page_config(layout="wide")
 
 uploaded_file = st.sidebar.file_uploader("Upload Production Listing",  type=['csv', 'xlsx', 'xls'], kwargs=None,)
 
