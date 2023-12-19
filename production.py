@@ -17,6 +17,17 @@ theme_good = {'bgcolor': '#EFF8F7','title_color': 'green','content_color': 'gree
 
 st.sidebar.image('corplogo.PNG', use_column_width=True)
 st.set_page_config(layout="wide")
+st.markdown("""
+    <style>
+        .reportview-container {
+            margin-top: -2em;
+        }
+        #MainMenu {visibility: hidden;}
+        .stDeployButton {display:none;}
+        footer {visibility: hidden;}
+        #stDecoration {display:none;}
+    </style>
+""", unsafe_allow_html=True)
 
 uploaded_file = st.sidebar.file_uploader("Upload Production Listing",  type=['csv', 'xlsx', 'xls'], kwargs=None,)
 
