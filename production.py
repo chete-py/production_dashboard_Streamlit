@@ -151,7 +151,7 @@ if uploaded_file is not None:
 
         chart.animate(
             
-            Config({"x": "BRANCH", "y": "GROSS PREMIUM", "title": "PRODUCTION PER BRANCH", "color": "BRANCH",  "label":"GROSS PREMIUM"}),delay=1.5)
+            Config({"x": "BRANCH", "y": "GROSS PREMIUM", "title": "PRODUCTION PER BRANCH", "color": "BRANCH", "label":"GROSS PREMIUM"}),delay=1.5)
            
 
        
