@@ -350,9 +350,7 @@ if uploaded_file is not None:
         with card_container(key="chart"):
             ui.table(data=table_data)
             #st.write(table_data.style.set_properties(**{'text-align': 'center'}).to_html(index=False, escape=False), unsafe_allow_html=True)
-                
-        st.markdown("")
-        
+                        
         with card_container(key="chart1"):
             cc= st.columns(4)
 
