@@ -167,11 +167,12 @@ if uploaded_file is not None:
         st.markdown("")
 
         sorted_prev = pd.DataFrame(preview_sorted)
+        prev = [['NEW TM', 'INTERMEDIARY', 'GROSS PREMIUM']]
 
-        st.markdown("**INTERMEDIARIES WITH THE HIGHEST PRODUCTION**")
+        st.subheader("**INTERMEDIARIES WITH THE HIGHEST PRODUCTION**")
 
         with card_container(key="chart2"):
-            ui.table(data=sorted_prev)
+            ui.table(data=prev)
 
         st.markdown("")
 
