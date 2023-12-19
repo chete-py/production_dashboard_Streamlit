@@ -53,6 +53,8 @@ if uploaded_file is not None:
     view = st.sidebar.radio('Select',['Company', 'Branch', 'Territorial Manager'])
     df2 = df[["TRANSACTION DATE", "BRANCH", "INTERMEDIARY TYPE", "INTERMEDIARY", "PRODUCT", "SALES TYPE", "STAMP DUTY", "SUM INSURED", "GROSS PREMIUM", "NET BALANCE", "RECEIPTS", "TM"]]    
     df2['STAMP DUTY'] = df2['STAMP DUTY'].astype(str) 
+    # Update 'location' column based on the condition
+    df2.loc[df2['INTERMEDIARY'] == 'GWOKA INSURANCE AGENCY', 'BRANCH'] = 'Head Office'
     total_motor_produce = df2[df2['STAMP DUTY'].str.contains('MOTOR')] 
     thedf = df2.dropna(subset='TRANSACTION DATE')
     thedf['TRANSACTION DATE'] = pd.to_datetime(thedf['TRANSACTION DATE'], format='%m/%d/%Y')
