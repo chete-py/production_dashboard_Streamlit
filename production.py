@@ -151,13 +151,13 @@ if uploaded_file is not None:
 
         chart.animate(
             
-            Config({"x": "BRANCH", "y": "GROSS PREMIUM", "title": "PRODUCTION PER BRANCH", "color": "BRANCH",  "label":"GROSS PREMIUM"}),delay=1.5)
+            Config({"x": "BRANCH", "y": "GROSS PREMIUM", "title": "PRODUCTION PER BRANCH", "color": "BRANCH",  "label":"GROSS PREMIUM", "width":100%}),delay=1.5)
            
 
        
         if st.checkbox("Swap"):
             
-            chart.animate(Config({"x":"GROSS PREMIUM", "y": "BRANCH", "title": "PRODUCTION PER BRANCH", "color": "BRANCH",  "label":"GROSS PREMIUM"}))
+            chart.animate(Config({"x":"GROSS PREMIUM", "y": "BRANCH", "title": "PRODUCTION PER BRANCH", "color": "BRANCH", "width":100%, "label":"GROSS PREMIUM"}))
 
         
 
