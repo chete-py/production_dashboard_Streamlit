@@ -17,7 +17,7 @@ theme_bad = {'bgcolor': '#FFF0F0','title_color': 'red','content_color': 'red','i
 theme_neutral = {'bgcolor': '#e8d5b7','title_color': 'orange','content_color': '#222831','icon_color': 'orange', 'icon': 'fa fa-question-circle'}
 theme_good = {'bgcolor': '#EFF8F7','title_color': 'green','content_color': 'green','icon_color': 'green', 'icon': 'fa fa-check-circle'}
 
-st.set_page_config(page_icon="corplogo.PNG", page_title = 'BD_TEAM', layout="wide")
+st.set_page_config(page_icon="corplogo.PNG", page_title = 'CIC_PRODUCTION ', layout="wide")
 
 st.sidebar.image('corplogo.PNG', use_column_width=True)
 
