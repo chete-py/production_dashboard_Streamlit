@@ -103,7 +103,7 @@ if uploaded_file is not None:
     preview_sorted = preview.sort_values(by='GROSS PREMIUM', ascending=False).head(5)
 
     if view == 'Company':
-        st.subheader(f"{current_month_name} PRODUCTION DASHBOARD")
+        st.subheader(f"{current_month_name} PRODUCTION DASHBOARD - TARGET KES 45M")
 
         motor = total_motor_produce[total_motor_produce['STAMP DUTY'] == 'MOTOR']
         nonmotor = total_motor_produce[total_motor_produce['STAMP DUTY'] == 'NON-MOTOR']
