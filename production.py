@@ -292,7 +292,7 @@ if uploaded_file is not None:
                  y= bar_df       
                  ))
 
-            fig.update_layout(title={'text': 'TERRITORIAL MANAGER PERFORMANCE IN BRANCH', 'x': 0.5, 'xanchor': 'center'}, width=525, tickfont=dict(size=10)) 
+            fig.update_layout(title={'text': 'TERRITORIAL MANAGER PERFORMANCE IN BRANCH', 'x': 0.5, 'xanchor': 'center'}, width=525, xaxis=dict(tickfont=dict(size=6))) 
     
             with cols3[0]: 
                 st.plotly_chart(fig)
