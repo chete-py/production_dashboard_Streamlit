@@ -219,6 +219,8 @@ if uploaded_file is not None:
 
         # Filter the DataFrame based on the selected branch
         filtered_df = newdf[newdf['BRANCH'] == selected_branch]
+        filtered_df2 = this_week[this_week['BRANCH'] == selected_branch]
+        
         for_cancellation =  cancellations[cancellations['BRANCH'] == selected_branch]
 
         nonmotordf = filtered_df[~filtered_df['PRODUCT'].str.contains('Motor')]
@@ -267,16 +269,33 @@ if uploaded_file is not None:
 
         
         bar_df = filtered_df.groupby('NEW TM')['GROSS PREMIUM'].sum().reset_index()
+        bar_df2 = filtered_df.groupby('DayOfWeek')['GROSS PREMIUM'].sum().reset_index()
         
+        cols3 = st.columns(2)
+
         fig = go.Figure(data =[go.Bar(
                  x= bar_df["NEW TM"],
                  y= bar_df["GROSS PREMIUM"]        
                  )])
 
-        fig.update_layout(title={'text': 'TERRITORIAL MANAGER PERFORMANCE IN BRANCH', 'x': 0.375, 'xanchor': 'center'}) 
+        fig.update_layout(title={'text': 'TERRITORIAL MANAGER PERFORMANCE IN BRANCH', 'x': 0.5, 'xanchor': 'center'}) 
 
-        with card_container(key="chart2"):
+        with cols3[0]: 
             st.plotly_chart(fig)
+
+
+        fig2 = go.Figure()
+
+        fig2.add_trace(go.Bar(
+                width=0.5,
+                 x= bar_df2["DayOfWeek"],
+                 y= bar_df2["GROSS PREMIUM"]        
+                 ))
+
+        fig2.update_layout(title={'text': 'This Week Daily Production', 'x': 0.5, 'xanchor': 'center'}, width=475, xaxis=dict(categoryorder='array', categoryarray=["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] )) 
+
+        with cols3[1]: 
+            st.plotly_chart(fig2)
 
     if view == 'Territorial Manager':
         unique = newdf['NEW TM'].unique()
