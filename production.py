@@ -7,7 +7,6 @@ from local_components import card_container
 from st_aggrid.grid_options_builder import GridOptionsBuilder
 import plotly.graph_objects as go
 from datetime import datetime, timedelta
-from streamlit_vizzu import VizzuChart, Data, Config, Style
 import base64
 import io
 import hydralit_components as hc
@@ -52,6 +51,19 @@ if uploaded_file is not None:
 
     view = st.sidebar.radio('Select',['Company', 'Branch', 'Territorial Manager'])
     df2 = df[["TRANSACTION DATE", "BRANCH", "INTERMEDIARY TYPE", "INTERMEDIARY", "PRODUCT", "SALES TYPE", "STAMP DUTY", "SUM INSURED", "GROSS PREMIUM", "NET BALANCE", "RECEIPTS", "TM"]]    
+    # Convert the 'Date' column to datetime format
+    df2['TRANSACTION DATE'] = pd.to_datetime(df2['TRANSACTION DATE'])
+
+    # Extract the day of the week and create a new column
+    df2['DayOfWeek'] = df2['TRANSACTION DATE'].dt.day_name()
+    
+    current_date = datetime.now()
+    start_of_week = current_date - timedelta(days=current_date.weekday())
+    end_of_week = start_of_week + timedelta(days=6)
+
+    this_week = df2[((df2['TRANSACTION DATE']).dt.date >= start_of_week.date()) & ((df2['TRANSACTION DATE']).dt.date <= end_of_week.date())]
+    
+    
     df2['STAMP DUTY'] = df2['STAMP DUTY'].astype(str) 
     # Update 'location' column based on the condition
     df2.loc[df2['INTERMEDIARY'] == 'GWOKA INSURANCE AGENCY', 'BRANCH'] = 'Head Office'
@@ -72,10 +84,6 @@ if uploaded_file is not None:
     new_business_percent = ((new_business['GROSS PREMIUM'].sum())/(newdf['GROSS PREMIUM'].sum()) * 100)
     nbp = "{:,.0f}".format(new_business_percent)
     
-   
-    # Get the current date
-    current_date = datetime.now()
-
     # Create a pandas Timestamp object
     timestamp = pd.Timestamp(current_date)
 
@@ -108,14 +116,15 @@ if uploaded_file is not None:
         mix = (motorproduce/ totalmix)*100
         mix_result = "{:.0f}".format(mix)
 
-        chart = VizzuChart()
+        
         
         bar = newdf.groupby('BRANCH')['GROSS PREMIUM'].sum().reset_index()
+        bar2 = this_week.groupby('DayOfWeek')['GROSS PREMIUM'].sum().reset_index()
 
-        data = Data()
+       
 
         bar['Percentage'] = (bar['GROSS PREMIUM']/(bar['GROSS PREMIUM'].sum()) * 100)
-        
+               
             
         gp = newdf['GROSS PREMIUM'].sum()
         total_gp = "Ksh. {:,.0f}".format(gp)
@@ -144,26 +153,37 @@ if uploaded_file is not None:
     
             with cc[4]:
                 hc.info_card(title='Portfolio Mix',content= f'{mix_result}% Motor',key='sec',bar_value=75, content_text_size = 'medium', sentiment='good', title_text_size='small')
-            
-       
-        data.add_df(bar)
-        
-        # Animate the data
-        chart.animate(data)
 
-        chart.animate(
-            
-            Config({"x": "BRANCH", "y": "GROSS PREMIUM", "title": "PRODUCTION PER BRANCH", "color": "BRANCH", "label":"GROSS PREMIUM"}),delay=1.5)
-           
 
-       
-        if st.checkbox("Swap"):
-            
-            chart.animate(Config({"x":"GROSS PREMIUM", "y": "BRANCH", "title": "PRODUCTION PER BRANCH", "color": "BRANCH","label":"GROSS PREMIUM"}))
-
-        
-
-        output = chart.show()
+        with card_container(key="chart2"):
+            cols2 = st.columns(2)
+    
+            fig = go.Figure()
+    
+            fig.add_trace(go.Bar(
+    
+                    width=0.5,
+                     x= bar["BRANCH"],
+                     y= bar["GROSS PREMIUM"]        
+                     ))
+    
+            fig.update_layout(title={'text': 'Month To Date Branch Performance', 'x': 0.5, 'xanchor': 'center'}, width=450) 
+    
+            with cols2[0]: 
+                st.plotly_chart(fig)
+    
+            fig2 = go.Figure()
+    
+            fig2.add_trace(go.Bar(
+                    width=0.5,
+                     x= bar2["DayOfWeek"],
+                     y= bar2["GROSS PREMIUM"]        
+                     ))
+    
+            fig2.update_layout(title={'text': 'This Week Daily Production', 'x': 0.375, 'xanchor': 'center'}, width=475, xaxis=dict(categoryorder='array', categoryarray=["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] )) 
+    
+            with cols2[1]: 
+                st.plotly_chart(fig2)
 
         
         st.markdown("")
