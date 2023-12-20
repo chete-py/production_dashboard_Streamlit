@@ -179,13 +179,13 @@ if uploaded_file is not None:
                     x= bar2['DayOfWeek'],
                     y= bar2['GROSS PREMIUM'],       
                      ))
-            #  # Add an annotation for the total amount
-            # fig2.add_annotation(
-            #     x= bar2.index[-1],
-            #     y= bar2,                     
-            #     text=f'Total Week To Date: {total_amount}',
+             # Add an annotation for the total amount
+            fig2.add_annotation(
+                x= bar2['DayOfWeek'].index[-1],
+                y= bar2['GROSS PREMIUM'],                     
+                text=f'Total Week To Date: {total_amount}',
                 
-            # )
+            )
     
             fig2.update_layout(title={'text': 'THIS WEEK AGGREGATE DAILY PRODUCTION', 'x': 0.5, 'xanchor': 'center'}, width=475, xaxis=dict(categoryorder='array', categoryarray=["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] )) 
     
@@ -292,7 +292,7 @@ if uploaded_file is not None:
                  y= bar_df       
                  ))
 
-            fig.update_layout(title={'text': 'TERRITORIAL MANAGER PERFORMANCE IN BRANCH', 'x': 0.5, 'xanchor': 'center'}, width=525, xaxis=dict(tickfont=dict(size=6))) 
+            fig.update_layout(title={'text': 'TERRITORIAL MANAGER PERFORMANCE IN BRANCH', 'x': 0.5, 'xanchor': 'center'}, width=525, xaxis=dict(tickfont=dict(size=9))) 
     
             with cols3[0]: 
                 st.plotly_chart(fig)
@@ -302,16 +302,16 @@ if uploaded_file is not None:
     
             fig2.add_trace(go.Bar(
                     width=0.45,
-                     x= bar_df2.index,
-                     y= bar_df2        
+                     x= bar_df2['DayOfWeek'],
+                     y= bar_df2['GROSS PREMIUM']        
                      ))
              # Add an annotation for the total amount
-            # fig2.add_annotation(
-            #     x= bar_df2.index[-1],
-            #     y= bar_df2,                     
-            #     text=f'Total Week To Date: {total_branch_amount}',
+            fig2.add_annotation(
+                x= bar_df2['DayOfWeek'].index[-1],
+                y= bar_df2['GROSS PREMIUM'],                     
+                text=f'Total Week To Date: {total_branch_amount}',
                 
-            # )
+            )
     
             fig2.update_layout(title={'text': 'THIS WEEK DAILY PRODUCTION', 'x': 0.5, 'xanchor': 'center'}, width=425, xaxis=dict(categoryorder='array', categoryarray=["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"])) 
     
