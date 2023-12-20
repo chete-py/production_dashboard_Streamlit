@@ -280,7 +280,7 @@ if uploaded_file is not None:
                  width=0.5,
                  x= bar_df["NEW TM"],
                  y= bar_df["GROSS PREMIUM"]        
-                 )])
+                 ))
 
             fig.update_layout(title={'text': 'TERRITORIAL MANAGER PERFORMANCE IN BRANCH', 'x': 0.5, 'xanchor': 'center'}, width=500) 
     
