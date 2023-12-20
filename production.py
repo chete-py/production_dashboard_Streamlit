@@ -270,32 +270,36 @@ if uploaded_file is not None:
         
         bar_df = filtered_df.groupby('NEW TM')['GROSS PREMIUM'].sum().reset_index()
         bar_df2 = filtered_df2.groupby('DayOfWeek')['GROSS PREMIUM'].sum().reset_index()
-        
-        cols3 = st.columns(2)
 
-        fig = go.Figure(data =[go.Bar(
+        with card_container(key="chart2"):
+            cols3 = st.columns(2)
+    
+            fig = go.Figure()
+    
+            fig.add_trace(go.Bar( 
+                 width=0.5,
                  x= bar_df["NEW TM"],
                  y= bar_df["GROSS PREMIUM"]        
                  )])
 
-        fig.update_layout(title={'text': 'TERRITORIAL MANAGER PERFORMANCE IN BRANCH', 'x': 0.5, 'xanchor': 'center'}) 
-
-        with cols3[0]: 
-            st.plotly_chart(fig)
-
-
-        fig2 = go.Figure()
-
-        fig2.add_trace(go.Bar(
-                width=0.5,
-                 x= bar_df2["DayOfWeek"],
-                 y= bar_df2["GROSS PREMIUM"]        
-                 ))
-
-        fig2.update_layout(title={'text': 'This Week Daily Production', 'x': 0.5, 'xanchor': 'center'}, width=475, xaxis=dict(categoryorder='array', categoryarray=["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] )) 
-
-        with cols3[1]: 
-            st.plotly_chart(fig2)
+            fig.update_layout(title={'text': 'TERRITORIAL MANAGER PERFORMANCE IN BRANCH', 'x': 0.5, 'xanchor': 'center'}, width=500) 
+    
+            with cols3[0]: 
+                st.plotly_chart(fig)
+    
+    
+            fig2 = go.Figure()
+    
+            fig2.add_trace(go.Bar(
+                    width=0.45,
+                     x= bar_df2["DayOfWeek"],
+                     y= bar_df2["GROSS PREMIUM"]        
+                     ))
+    
+            fig2.update_layout(title={'text': 'This Week Daily Production', 'x': 0.5, 'xanchor': 'center'}, width=475, xaxis=dict(categoryorder='array', categoryarray=["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] )) 
+    
+            with cols3[1]: 
+                st.plotly_chart(fig2)
 
     if view == 'Territorial Manager':
         unique = newdf['NEW TM'].unique()
