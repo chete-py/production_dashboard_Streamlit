@@ -269,7 +269,7 @@ if uploaded_file is not None:
 
         
         bar_df = filtered_df.groupby('NEW TM')['GROSS PREMIUM'].sum().reset_index()
-        bar_df2 = filtered_df.groupby('DayOfWeek')['GROSS PREMIUM'].sum().reset_index()
+        bar_df2 = filtered_df2.groupby('DayOfWeek')['GROSS PREMIUM'].sum().reset_index()
         
         cols3 = st.columns(2)
 
