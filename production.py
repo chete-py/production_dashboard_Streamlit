@@ -176,8 +176,8 @@ if uploaded_file is not None:
     
             fig2.add_trace(go.Bar(
                     width=0.5,
-                    x= bar2.index,
-                    y= bar2,       
+                    x= bar2['DayOfWeek'],
+                    y= bar2['GROSS PREMIUM'],       
                      ))
             #  # Add an annotation for the total amount
             # fig2.add_annotation(
