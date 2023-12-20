@@ -179,13 +179,13 @@ if uploaded_file is not None:
                     x= bar2.index,
                     y= bar2,       
                      ))
-             # Add an annotation for the total amount
-            fig2.add_annotation(
-                x= bar2.index[-1],
-                y= bar2,                     
-                text=f'Total Week To Date: {total_amount}',
+            #  # Add an annotation for the total amount
+            # fig2.add_annotation(
+            #     x= bar2.index[-1],
+            #     y= bar2,                     
+            #     text=f'Total Week To Date: {total_amount}',
                 
-            )
+            # )
     
             fig2.update_layout(title={'text': 'THIS WEEK AGGREGATE DAILY PRODUCTION', 'x': 0.5, 'xanchor': 'center'}, width=475, xaxis=dict(categoryorder='array', categoryarray=["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] )) 
     
@@ -306,12 +306,12 @@ if uploaded_file is not None:
                      y= bar_df2        
                      ))
              # Add an annotation for the total amount
-            fig2.add_annotation(
-                x= bar_df2.index[-1],
-                y= bar_df2,                     
-                text=f'Total Week To Date: {total_branch_amount}',
+            # fig2.add_annotation(
+            #     x= bar_df2.index[-1],
+            #     y= bar_df2,                     
+            #     text=f'Total Week To Date: {total_branch_amount}',
                 
-            )
+            # )
     
             fig2.update_layout(title={'text': 'THIS WEEK DAILY PRODUCTION', 'x': 0.5, 'xanchor': 'center'}, width=425, xaxis=dict(categoryorder='array', categoryarray=["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"])) 
     
