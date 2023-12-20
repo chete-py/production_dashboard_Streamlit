@@ -184,7 +184,7 @@ if uploaded_file is not None:
                 x= bar2['DayOfWeek'].index[-1],
                 y= bar2['GROSS PREMIUM'],                     
                 text=f'Total Week To Date: {total_amount}',
-                
+                font=dict(size=20)                
             )
     
             fig2.update_layout(title={'text': 'THIS WEEK AGGREGATE DAILY PRODUCTION', 'x': 0.5, 'xanchor': 'center'}, width=475, xaxis=dict(categoryorder='array', categoryarray=["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] )) 
