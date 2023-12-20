@@ -241,9 +241,9 @@ if uploaded_file is not None:
         mix = (motor/total_mix)*100
         mix_result = "{:.0f}".format(mix)
 
-        bar_df = filtered_df.groupby('NEW TM')['GROSS PREMIUM'].sum().reset_index()
+        bar_df = filtered_df.groupby('NEW TM')['GROSS PREMIUM'].sum()
 
-        total_branch_amount = f"Ksh.(filtered_df2['GROSS PREMIUM'].sum():,"
+        total_branch_amount = filtered_df2['GROSS PREMIUM'].sum()
         
 
         gp = filtered_df['GROSS PREMIUM'].sum()
