@@ -176,7 +176,7 @@ if uploaded_file is not None:
     
             fig2.add_trace(go.Bar(
                     width=0.5,
-                    x= bar2.index[-1],
+                    x= bar2.index,
                     y= bar2,       
                      ))
              # Add an annotation for the total amount
@@ -292,7 +292,7 @@ if uploaded_file is not None:
                  y= bar_df       
                  ))
 
-            fig.update_layout(title={'text': 'TERRITORIAL MANAGER PERFORMANCE IN BRANCH', 'x': 0.5, 'xanchor': 'center'}, width=525) 
+            fig.update_layout(title={'text': 'TERRITORIAL MANAGER PERFORMANCE IN BRANCH', 'x': 0.5, 'xanchor': 'center'}, width=525, tickfont=dict(size=10)) 
     
             with cols3[0]: 
                 st.plotly_chart(fig)
@@ -313,7 +313,7 @@ if uploaded_file is not None:
                 
             )
     
-            fig2.update_layout(title={'text': 'THIS WEEK DAILY PRODUCTION', 'x': 0.5, 'xanchor': 'center'}, width=425, xaxis=dict(categoryorder='array', categoryarray=["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] )) 
+            fig2.update_layout(title={'text': 'THIS WEEK DAILY PRODUCTION', 'x': 0.5, 'xanchor': 'center'}, width=425, xaxis=dict(categoryorder='array', categoryarray=["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"])) 
     
             with cols3[1]: 
                 st.plotly_chart(fig2)
