@@ -282,7 +282,7 @@ if uploaded_file is not None:
                  y= bar_df["GROSS PREMIUM"]        
                  ))
 
-            fig.update_layout(title={'text': 'TERRITORIAL MANAGER PERFORMANCE IN BRANCH', 'x': 0.5, 'xanchor': 'center'}, width=600) 
+            fig.update_layout(title={'text': 'TERRITORIAL MANAGER PERFORMANCE IN BRANCH', 'x': 0.5, 'xanchor': 'center'}, width=525) 
     
             with cols3[0]: 
                 st.plotly_chart(fig)
@@ -296,7 +296,7 @@ if uploaded_file is not None:
                      y= bar_df2["GROSS PREMIUM"]        
                      ))
     
-            fig2.update_layout(title={'text': 'This Week Daily Production', 'x': 0.5, 'xanchor': 'center'}, width=400, xaxis=dict(categoryorder='array', categoryarray=["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] )) 
+            fig2.update_layout(title={'text': 'This Week Daily Production', 'x': 0.5, 'xanchor': 'center'}, width=425, xaxis=dict(categoryorder='array', categoryarray=["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] )) 
     
             with cols3[1]: 
                 st.plotly_chart(fig2)
