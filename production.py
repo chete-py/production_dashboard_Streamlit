@@ -176,8 +176,8 @@ if uploaded_file is not None:
     
             fig2.add_trace(go.Bar(
                     width=0.5,
-                     x= bar2["DayOfWeek"],
-                     y= bar2["GROSS PREMIUM"]        
+                    x= bar2.index[-1],
+                    y= bar2,       
                      ))
              # Add an annotation for the total amount
             fig2.add_annotation(
@@ -288,8 +288,8 @@ if uploaded_file is not None:
     
             fig.add_trace(go.Bar( 
                  width=0.5,
-                 x= bar_df["NEW TM"],
-                 y= bar_df["GROSS PREMIUM"]        
+                 x= bar_df.index,
+                 y= bar_df       
                  ))
 
             fig.update_layout(title={'text': 'TERRITORIAL MANAGER PERFORMANCE IN BRANCH', 'x': 0.5, 'xanchor': 'center'}, width=525) 
@@ -302,8 +302,8 @@ if uploaded_file is not None:
     
             fig2.add_trace(go.Bar(
                     width=0.45,
-                     x= bar_df2["DayOfWeek"],
-                     y= bar_df2["GROSS PREMIUM"]        
+                     x= bar_df2.index,
+                     y= bar_df2        
                      ))
              # Add an annotation for the total amount
             fig2.add_annotation(
