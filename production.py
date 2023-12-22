@@ -153,45 +153,56 @@ if uploaded_file is not None:
     
             with cc[4]:
                 hc.info_card(title='Portfolio Mix',content= f'{mix_result}% Motor',key='sec',bar_value=75, content_text_size = 'medium', sentiment='good', title_text_size='medium')
+        
+        tab1, tab2 = st.tabs(["📈 Chart", "🗃 Preview Uploaded Data"])
+        with tab1:
+            with card_container(key="chart2"):
+                cols2 = st.columns(2)
+        
+                fig = go.Figure()
+        
+                fig.add_trace(go.Bar(
+        
+                        width=0.5,
+                         x= bar["BRANCH"],
+                         y= bar["GROSS PREMIUM"]        
+                         ))
+        
+                fig.update_layout(title={'text': 'MONTH TO DATE BRANCH PERFORMANCE', 'x': 0.5, 'xanchor': 'center'}, width=450) 
+        
+                with cols2[0]: 
+                    st.plotly_chart(fig)
+        
+                fig2 = go.Figure()
+        
+                fig2.add_trace(go.Bar(
+                        width=0.5,
+                        x= bar2['DayOfWeek'],
+                        y= bar2['GROSS PREMIUM'],       
+                         ))
+                 # Add an annotation for the total amount
+                fig2.add_annotation(
+                    x= bar2['DayOfWeek'].index[-1],
+                    y= bar2['GROSS PREMIUM'],                     
+                    text=f'Total Week To Date: {total_amount}',
+                    font=dict(size=20)                
+                )
+        
+                fig2.update_layout(title={'text': 'THIS WEEK AGGREGATE DAILY PRODUCTION', 'x': 0.5, 'xanchor': 'center'}, width=475, xaxis=dict(categoryorder='array', categoryarray=["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] )) 
+        
+                with cols2[1]: 
+                    st.plotly_chart(fig2)
 
+        with tab2:
+             st.subheader('**Preview of the Uploaded Data Frame**')
 
-        with card_container(key="chart2"):
-            cols2 = st.columns(2)
-    
-            fig = go.Figure()
-    
-            fig.add_trace(go.Bar(
-    
-                    width=0.5,
-                     x= bar["BRANCH"],
-                     y= bar["GROSS PREMIUM"]        
-                     ))
-    
-            fig.update_layout(title={'text': 'MONTH TO DATE BRANCH PERFORMANCE', 'x': 0.5, 'xanchor': 'center'}, width=450) 
-    
-            with cols2[0]: 
-                st.plotly_chart(fig)
-    
-            fig2 = go.Figure()
-    
-            fig2.add_trace(go.Bar(
-                    width=0.5,
-                    x= bar2['DayOfWeek'],
-                    y= bar2['GROSS PREMIUM'],       
-                     ))
-             # Add an annotation for the total amount
-            fig2.add_annotation(
-                x= bar2['DayOfWeek'].index[-1],
-                y= bar2['GROSS PREMIUM'],                     
-                text=f'Total Week To Date: {total_amount}',
-                font=dict(size=20)                
-            )
-    
-            fig2.update_layout(title={'text': 'THIS WEEK AGGREGATE DAILY PRODUCTION', 'x': 0.5, 'xanchor': 'center'}, width=475, xaxis=dict(categoryorder='array', categoryarray=["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] )) 
-    
-            with cols2[1]: 
-                st.plotly_chart(fig2)
-
+            griddf = newdf[["NEW TM", "INTERMEDIARY", "TRANSACTION DATE", "PRODUCT", "GROSS PREMIUM", "NET BALANCE", "RECEIPTS", ]]
+            gd = GridOptionsBuilder.from_dataframe(griddf) 
+            select = st.radio('', options = ['multiple'])
+            gd.configure_selection(selection_mode = select, use_checkbox=True)
+            gridoptions = gd.build()
+            AgGrid(griddf, gridOptions=gridoptions)
+            
         
         st.markdown("")
 
@@ -202,14 +213,7 @@ if uploaded_file is not None:
         
         st.markdown("")
 
-        st.subheader('**Preview of the Uploaded Data Frame**')
-
-        griddf = newdf[["NEW TM", "INTERMEDIARY", "TRANSACTION DATE", "PRODUCT", "GROSS PREMIUM", "NET BALANCE", "RECEIPTS", ]]
-        gd = GridOptionsBuilder.from_dataframe(griddf) 
-        select = st.radio('', options = ['multiple'])
-        gd.configure_selection(selection_mode = select, use_checkbox=True)
-        gridoptions = gd.build()
-        AgGrid(griddf, gridOptions=gridoptions)
+       
 
         if st.button("Download CSV"):
             csv_data = griddf.to_csv(index=False, encoding='utf-8')
