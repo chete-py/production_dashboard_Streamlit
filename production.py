@@ -154,7 +154,7 @@ if uploaded_file is not None:
             with cc[4]:
                 hc.info_card(title='Portfolio Mix',content= f'{mix_result}% Motor',key='sec',bar_value=75, content_text_size = 'medium', sentiment='good', title_text_size='medium')
         
-        tab1, tab2 = st.tabs(["📈 Chart", "🗃 Preview Uploaded Data"])
+        tab1, tab2 = st.tabs(["📈 Company Production Summary", "🗃 Preview Uploaded Data"])
         with tab1:
             with card_container(key="chart2"):
                 cols2 = st.columns(2)
