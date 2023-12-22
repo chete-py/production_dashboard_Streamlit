@@ -194,8 +194,7 @@ if uploaded_file is not None:
                     st.plotly_chart(fig2)
 
         with tab2:
-             st.subheader('**Preview of the Uploaded Data Frame**')
-
+            st.subheader('**Preview of the Uploaded Data Frame**')
             griddf = newdf[["NEW TM", "INTERMEDIARY", "TRANSACTION DATE", "PRODUCT", "GROSS PREMIUM", "NET BALANCE", "RECEIPTS", ]]
             gd = GridOptionsBuilder.from_dataframe(griddf) 
             select = st.radio('', options = ['multiple'])
