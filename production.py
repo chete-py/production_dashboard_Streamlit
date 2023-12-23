@@ -366,7 +366,7 @@ if uploaded_file is not None:
         elif current_date.weekday() == 6:  # Sunday
             current_date -= timedelta(days= 2)
 
-        most_recent = df[df['TRANSACTION DATE'] == current_date]
+        most_recent = filtered_df[filtered_df['TRANSACTION DATE'] == current_date]
         
         daily_cancellation =  cancellations[(cancellations['NEW TM'] == selected_manager) & (cancellations['TRANSACTION DATE'] == most_current_date)]
 
