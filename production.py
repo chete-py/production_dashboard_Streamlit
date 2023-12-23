@@ -200,7 +200,7 @@ if uploaded_file is not None:
                     font=dict(size=20)                
                 )
         
-                fig2.update_layout(title={'text': 'THIS WEEK AGGREGATE DAILY PRODUCTION', 'x': 0.5, 'xanchor': 'center'}, width=475, xaxis=dict(categoryorder='array', categoryarray=["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]), xaxis=dict(tickfont=dict(size=9))) 
+                fig2.update_layout(title={'text': 'THIS WEEK AGGREGATE DAILY PRODUCTION', 'x': 0.5, 'xanchor': 'center'}, width=475, xaxis=dict(categoryorder='array', categoryarray=["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], tickfont=dict(size=9))) 
         
                 with cols2[1]: 
                     st.plotly_chart(fig2)
