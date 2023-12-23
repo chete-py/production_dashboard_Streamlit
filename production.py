@@ -103,7 +103,19 @@ if uploaded_file is not None:
     preview_sorted = preview.sort_values(by='GROSS PREMIUM', ascending=False).head(5)
 
     if view == 'Company':
-        st.subheader(f"{current_month_name} PRODUCTION DASHBOARD - TARGET KES 45M")
+        # Check if it's the first day of the month or if the third day of the month is a Monday
+        if current_date.day == 1 or (current_date.day == 3 and current_date.weekday() == 0):  # 0 represents Monday
+            # Subtract one month to get the previous month
+            previous_month = current_date - timedelta(days=current_date.day)
+            previous_month_name = previous_month.strftime('%B').upper()
+
+            # Use the previous month's name in the header
+            st.subheader(f"{previous_month_name} PRODUCTION DASHBOARD - TARGET KES 45M")
+        else:
+            # Use the current month's name in the header
+            current_month_name = current_date.strftime('%B').upper()
+            st.subheader(f"{current_month_name} PRODUCTION DASHBOARD - TARGET KES 45M")
+        
 
         motor = total_motor_produce[total_motor_produce['STAMP DUTY'] == 'MOTOR']
         nonmotor = total_motor_produce[total_motor_produce['STAMP DUTY'] == 'NON-MOTOR']
@@ -201,24 +213,19 @@ if uploaded_file is not None:
             gd.configure_selection(selection_mode = select, use_checkbox=True)
             gridoptions = gd.build()
             AgGrid(griddf, gridOptions=gridoptions)
+
+            if st.button("Download CSV"):
+                csv_data = griddf.to_csv(index=False, encoding='utf-8')
+                b64 = base64.b64encode(csv_data.encode()).decode()
+                href = f'<a href="data:file/csv;base64,{b64}" download="aggregate_production.csv">Download CSV</a>'
+                st.markdown(href, unsafe_allow_html=True) 
             
-        
-        st.markdown("")
 
         sorted_prev = pd.DataFrame(preview_sorted)
        
         st.subheader("**Intermediaries with the Highest Production**")
         st.dataframe(sorted_prev)
         
-        st.markdown("")
-
-       
-
-        if st.button("Download CSV"):
-            csv_data = griddf.to_csv(index=False, encoding='utf-8')
-            b64 = base64.b64encode(csv_data.encode()).decode()
-            href = f'<a href="data:file/csv;base64,{b64}" download="aggregate_production.csv">Download CSV</a>'
-            st.markdown(href, unsafe_allow_html=True) 
        
 
 
@@ -350,8 +357,17 @@ if uploaded_file is not None:
         
 
         most_current_date = newdf['TRANSACTION DATE'].max()
-        most_recent = filtered_df[filtered_df['TRANSACTION DATE'] == most_current_date]
+        current_date = pd.to_datetime(most_current_date)
 
+        # Check if the most current date is a Saturday (5) or Sunday (6)
+       
+        if current_date.weekday() == 5:  # Saturday
+            current_date -= timedelta(days= 1)
+        elif current_date.weekday() == 6:  # Sunday
+            current_date -= timedelta(days= 2)
+
+        most_recent = df[df['TRANSACTION DATE'] == current_date]
+        
         daily_cancellation =  cancellations[(cancellations['NEW TM'] == selected_manager) & (cancellations['TRANSACTION DATE'] == most_current_date)]
 
         day_premium = most_recent['GROSS PREMIUM'].sum()
