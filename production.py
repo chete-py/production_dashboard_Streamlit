@@ -314,7 +314,7 @@ if uploaded_file is not None:
                      ))
             
     
-            fig2.update_layout(title={'text': 'THIS WEEK DAILY PRODUCTION', 'x': 0.5, 'xanchor': 'center'}, width=425, xaxis=dict(categoryorder='array', categoryarray=["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"])) 
+            fig2.update_layout(title={'text': 'THIS WEEK DAILY PRODUCTION', 'x': 0.5, 'xanchor': 'center'}, width=425, xaxis=dict(categoryorder='array', categoryarray=["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], tickfont=dict(size=9)))
     
             with cols3[1]: 
                 st.plotly_chart(fig2)
