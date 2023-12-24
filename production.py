@@ -20,18 +20,6 @@ st.set_page_config(page_icon="corplogo.PNG", page_title = 'CIC_PRODUCTION ', lay
 
 st.sidebar.image('corplogo.PNG', use_column_width=True)
 
-st.markdown("""
-    <style>
-        .reportview-container {
-            margin-top: -2em;
-        }
-        #MainMenu {visibility: hidden;}
-        .stDeployButton {display:none;}
-        footer {visibility: hidden;}
-        #stDecoration {display:none;}
-    </style>
-""", unsafe_allow_html=True)
-
 uploaded_file = st.sidebar.file_uploader("Upload Production Listing",  type=['csv', 'xlsx', 'xls'], kwargs=None,)
 
 
@@ -60,14 +48,17 @@ if uploaded_file is not None:
     current_date = datetime.now()
     start_of_week = current_date - timedelta(days=current_date.weekday())
     end_of_week = start_of_week + timedelta(days=6)
-
+    
+    # Get transactions done in the current week
     this_week = df2[((df2['TRANSACTION DATE']).dt.date >= start_of_week.date()) & ((df2['TRANSACTION DATE']).dt.date <= end_of_week.date())]
+
+    # to get the portfolio mix (appears in the STAMP DUTY column)
+    df2['STAMP DUTY'] = df2['STAMP DUTY'].astype(str)
     
-    
-    df2['STAMP DUTY'] = df2['STAMP DUTY'].astype(str) 
     # Update 'location' column based on the condition
     df2.loc[df2['INTERMEDIARY'] == 'GWOKA INSURANCE AGENCY', 'BRANCH'] = 'Head Office'
     total_motor_produce = df2[df2['STAMP DUTY'].str.contains('MOTOR')] 
+    # Drop rows without a transaction date
     thedf = df2.dropna(subset='TRANSACTION DATE')
     thedf['TRANSACTION DATE'] = pd.to_datetime(thedf['TRANSACTION DATE'], format='%m/%d/%Y')
     # Extract the month name for each date in the 'date_column'
