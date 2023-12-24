@@ -9,4 +9,4 @@ Shadcn - Vizualization<br>
 AgGrid
 
 
-https://github.com/chete-py/production/issues/1#issue-2055046853
+https://github.com/chete-py/production/assets/112887160/b153638e-0470-415a-8bcf-8b21ac52b7bc
