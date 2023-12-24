@@ -8,7 +8,6 @@ from st_aggrid.grid_options_builder import GridOptionsBuilder
 import plotly.graph_objects as go
 from datetime import datetime, timedelta
 import base64
-import io
 import hydralit_components as hc
 
 #can apply customisation to almost all the properties of the card, including the progress bar
