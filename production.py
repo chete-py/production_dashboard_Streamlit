@@ -150,7 +150,9 @@ if uploaded_file is not None:
         bar = newdf.groupby('BRANCH')['GROSS PREMIUM'].sum().reset_index()
         bar2 = this_week.groupby('DayOfWeek')['GROSS PREMIUM'].sum().reset_index()
 
-        total_amount = f"Ksh.{this_week['GROSS PREMIUM'].sum():,.0f}"
+        total_weekly = f"Ksh.{this_week['GROSS PREMIUM'].sum():,.0f}"
+
+        total_amount = f"<span style='color:red'>{total_weekly}</span>"
 
         bar['Percentage'] = (bar['GROSS PREMIUM']/(bar['GROSS PREMIUM'].sum()) * 100)
                
