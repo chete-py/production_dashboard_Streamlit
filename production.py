@@ -150,7 +150,7 @@ if uploaded_file is not None:
         bar = newdf.groupby('BRANCH')['GROSS PREMIUM'].sum().reset_index()
         bar2 = this_week.groupby('DayOfWeek')['GROSS PREMIUM'].sum().reset_index()
 
-        total_amount = f"Ksh.{this_week['GROSS PREMIUM'].sum():,}"
+        total_amount = f"Ksh.{this_week['GROSS PREMIUM'].sum():,.0f}"
 
         bar['Percentage'] = (bar['GROSS PREMIUM']/(bar['GROSS PREMIUM'].sum()) * 100)
                
@@ -211,10 +211,10 @@ if uploaded_file is not None:
                          ))
                  # Add an annotation for the total amount
                 fig2.add_annotation(
-                    x= bar2['DayOfWeek'].index[-1],
+                    x= bar2['DayOfWeek'].index[-2],
                     y= bar2['GROSS PREMIUM'],                     
                     text=f'Total Week To Date: {total_amount}',
-                    font=dict(size=20)                
+                    font=dict(size=18)                
                 )
         
                 fig2.update_layout(title={'text': 'THIS WEEK AGGREGATE DAILY PRODUCTION', 'x': 0.5, 'xanchor': 'center'}, width=550, xaxis=dict(categoryorder='array', categoryarray=["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], tickfont=dict(size=12))) 
