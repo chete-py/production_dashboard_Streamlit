@@ -1,6 +1,8 @@
 import pandas as pd
+import gspread
+from google.oauth2 import service_account
 import streamlit as st
-import plotly as px
+import streamlit as st
 from st_aggrid import AgGrid
 import streamlit_shadcn_ui as ui
 from local_components import card_container
@@ -9,6 +11,22 @@ import plotly.graph_objects as go
 from datetime import datetime, timedelta
 import base64
 import hydralit_components as hc
+
+# Define your Google Sheets credentials JSON file (replace with your own)
+credentials_path = 'hackathon-405309-35c43230bdce.json'
+
+# Authenticate with Google Sheets using the credentials
+credentials = service_account.Credentials.from_service_account_file(credentials_path, scopes=['https://spreadsheets.google.com/feeds'])
+
+# Authenticate with Google Sheets using gspread
+gc = gspread.authorize(credentials)
+
+# Your Google Sheets URL
+url = "https://docs.google.com/spreadsheets/d/1yQXPZ4zdI8aiIzYXzzuAwDS1V_Zg0fWU6OaqZ_VmwB0/edit#gid=0"
+
+# Open the Google Sheets spreadsheet
+worksheet_1 = gc.open_by_url(url).worksheet("accounts")
+worksheet_2 = gc.open_by_url(url).worksheet("targets")
 
 #can apply customisation to almost all the properties of the card, including the progress bar
 theme_bad = {'bgcolor': '#FFF0F0','title_color': 'red','content_color': 'red','icon_color': 'red', 'icon': 'fa fa-times-circle'}
@@ -43,8 +61,11 @@ if uploaded_file is not None:
 
     # Extract the day of the week and create a new column
     df2['DayOfWeek'] = df2['TRANSACTION DATE'].dt.day_name()
-    
-    current_date = datetime.now()
+
+    # Extract the week performance for the most recent transaction
+    most_current_date = df2['TRANSACTION DATE'].max()
+    current_date = pd.to_datetime(most_current_date)
+
     start_of_week = current_date - timedelta(days=current_date.weekday())
     end_of_week = start_of_week + timedelta(days=6)
     
@@ -63,9 +84,15 @@ if uploaded_file is not None:
     # Extract the month name for each date in the 'date_column'
     thedf['MONTH NAME'] = thedf['TRANSACTION DATE'].dt.strftime('%B')
     thedf['MONTH NAME'] = thedf['MONTH NAME'].str.upper()
-    
-    lastdf = pd.read_csv('agency_accounts.csv')
 
+    # Read data from the Google Sheets worksheet
+    data = worksheet_1.get_all_values()
+    
+    # Prepare data for Plotly
+    headers = data[0]
+    data = data[1:]
+    lastdf = pd.DataFrame(data, columns=headers)  # Convert data to a DataFrame
+    
     newdf = pd.merge(thedf, lastdf, on='INTERMEDIARY', how='left')
     newdf.loc[newdf['INTERMEDIARY'].str.contains('REIN', case=False, na=False), 'NEW TM'] = 'REINSURANCE'
     newdf = newdf[["TRANSACTION DATE", "BRANCH", "INTERMEDIARY TYPE", "INTERMEDIARY", "PRODUCT", "SALES TYPE", "SUM INSURED", "GROSS PREMIUM", "NET BALANCE", "RECEIPTS", "NEW TM", "MONTH NAME"]]
@@ -311,8 +338,11 @@ if uploaded_file is not None:
 
     if view == 'Territorial Manager':
         unique = newdf['NEW TM'].unique()
-              
-        target = pd.read_csv('targets.csv')
+
+        data = worksheet_2.get_all_values()
+        headers = data[0]
+        data = data[1:]
+        target = pd.DataFrame(data, columns=headers)  # Convert data to a DataFrame
 
         target['NEW TM'] = target['NEW TM'].str.strip()
         target['MONTH'] = target['MONTH'].str.strip() 
@@ -482,4 +512,3 @@ if uploaded_file is not None:
             b64 = base64.b64encode(csv_data.encode()).decode()
             href = f'<a href="data:file/csv;base64,{b64}" download="{selected_manager}.csv">Download CSV</a>'
             st.markdown(href, unsafe_allow_html=True) 
-
