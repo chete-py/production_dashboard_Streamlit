@@ -35,7 +35,7 @@ theme_good = {'bgcolor': '#EFF8F7','title_color': 'green','content_color': 'gree
 
 st.set_page_config(page_icon="corplogo.PNG", page_title = 'CIC_PRODUCTION ', layout="wide")
 
-st.sidebar.image('production_logo.PNG', use_column_width=True)
+st.sidebar.image('production_logo.png', use_column_width=True)
 
 uploaded_file = st.sidebar.file_uploader("Upload Production Listing",  type=['csv', 'xlsx', 'xls'], kwargs=None,)
 
